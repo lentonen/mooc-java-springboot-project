@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DefaultController {
-
+//test
     @GetMapping("*")
     public String helloWorld(Model model) {
         model.addAttribute("message", "World!");
