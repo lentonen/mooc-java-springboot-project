@@ -9,7 +9,7 @@ public class DefaultController {
 //muutetaan jotakin
     @GetMapping("*")
     public String helloWorld(Model model) {
-        model.addAttribute("message", "World!");
+        model.addAttribute("message", "Maailma!");
         return "index";
     }
 }
