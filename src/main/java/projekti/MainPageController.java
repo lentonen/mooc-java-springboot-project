@@ -20,29 +20,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Henri
  */
 @Controller
-public class AccountController {
+public class MainPageController {
     
     @Autowired
     AccountRepository accountRepository;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
-    @GetMapping("/accounts")
+    @GetMapping("/mainPage")
     public String list(Model model) {
-        model.addAttribute("accounts", accountRepository.findAll());
-        return "accounts";
-    }
-
-    @PostMapping("/accounts")
-    public String add(@RequestParam String username, @RequestParam String realname, @RequestParam String password, @RequestParam String urlAddress) {
-        if (accountRepository.findByUsername(username) != null) {
-            return "redirect:/accounts";
-        }
-        
-        Account a = new Account(username, realname, passwordEncoder.encode(password), urlAddress, new ArrayList<Account>());
-        accountRepository.save(a);
-        return "redirect:/accounts";
-    }
-    
+        model.addAttribute("message", "Maailma!");
+        return "mainPage";
+    }  
 }

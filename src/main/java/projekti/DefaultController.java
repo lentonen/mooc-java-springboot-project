@@ -9,6 +9,6 @@ public class DefaultController {
 //muutetaan jotakin
     @GetMapping("*")
     public String helloWorld(Model model) {
-        return "redirect:/index_h1";
+        return "redirect:/mainPage";
     }
 }
