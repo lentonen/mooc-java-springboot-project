@@ -16,13 +16,13 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends AbstractPersistable<Long> {
+public class Account extends AbstractPersistable<Long> {
     
     private String username;
     private String realname;
     private String password;
     private String urlAddress;
     @OneToMany
-    private List<User> followed;
+    private List<Account> followed;
     
 }

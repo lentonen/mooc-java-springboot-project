@@ -9,7 +9,6 @@ public class DefaultController {
 //muutetaan jotakin
     @GetMapping("*")
     public String helloWorld(Model model) {
-        model.addAttribute("message", "Maailma!");
-        return "index_1";
+        return "redirect:/index_h1";
     }
 }
