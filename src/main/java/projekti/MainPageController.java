@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,21 +30,27 @@ public class MainPageController {
     
     @Autowired
     AccountService accountService;
+    
+    
 
 
     @GetMapping("/mainPage")
     public String list(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
+        String url= accountRepository.findByUsername(name).getUrlAddress();
+        return "redirect:mainPage/"+url;
+    }
+    
+    @GetMapping("/mainPage/{url}")
+    public String getOne(Model model, @PathVariable String url) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
         model.addAttribute("message", name);
         return "mainPage";
-    }  
+    }
     
-    
-    /**
-     * 
-     * @return 
-     */
+
     @PostMapping("/mainPage")
     public String search(Model model, @RequestParam String name) {
         model.addAttribute("accounts", accountService.findAccounts(name));
