@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -24,11 +26,17 @@ public class SearchPageController {
     @Autowired
     AccountService accountService;
     
-    @GetMapping("/search")
-    public String searchView(Model model) {
+    @PostMapping("/mainPage/search")
+    public String search(Model model, @RequestParam String name) {
+        model.addAttribute("accounts", accountService.findAccounts(name));
         return "search";
     }
     
     
-    
+     @PostMapping("/search/follow/{realname}")
+     public String follow(Model model, @PathVariable(value = "realname") String realname) {
+         accountService.startFollow(realname);
+         return "search";
+     }
+
 }

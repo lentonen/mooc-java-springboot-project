@@ -24,6 +24,9 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepository;
     
+    @Autowired
+    FollowersRepository followersRepository;
+    
     
     /**
      * Haetaan hakusanaa vastaavat käyttäjät listaan. Listassa ei näytetä kirjautunutta käyttäjää.
@@ -43,5 +46,67 @@ public class AccountService {
     }
     
     
+    public void startFollow(String realname) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        
+        followersRepository.save(new Followers(accountRepository.findByUsername(name), accountRepository.findByRealname(realname)));
+
+        //List<Followers> following = accountRepository.findByUsername(name).getFollowing();
+        //Account newFollowed = accountRepository.findByUsername(realname);
+        //followed.add(newFollowed);
+        //accountRepository.findByUsername(name).setFollow(followed);  
+    }
     
+    
+    public String getUrl(String realname) {
+        return accountRepository.findByRealname(realname).getUrlAddress();
+    }
+    
+    /**
+     * Palauttaa listan seuratuista henkilöistä.
+     * @param follow lista followers-olioita, joiden joukosta seurattuja henkilöitä etsitään
+     * @return lista seuratuista henkilöistä
+     */
+    public List<Account> findFollowed(ArrayList<Followers> follow) {
+        List<Account> accounts = new ArrayList<>();
+        
+        for (Followers followers : follow) {
+            Account followed  = followers.getTo();
+            if (!accounts.contains(followed)) {
+                accounts.add(followed);
+            }
+        }
+        return accounts;
+    }
+    
+    
+    /**
+     * Lopetaan käyttäjän seuraaminen
+     * @param id kenen seuraaminen lopetetaan
+     */
+    public void stopFollowing(Long id) {
+        Long userId = whoIsLogged();
+        Followers toBeDeleted = followersRepository.findByFromIdAndToId(userId, id);
+        followersRepository.delete(toBeDeleted);
+    }
+    
+    
+    /**
+     * Palauttaa listan käyttäjän seuraamista tileistä.
+     * @param userId
+     * @return 
+     */
+    public List<Account> isFollowing(Long userId) {
+     ArrayList<Followers> follow = followersRepository.findByFromId(userId);
+     return findFollowed(follow);
+    }
+    
+    
+    public Long whoIsLogged() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        Long userId = accountRepository.findByUsername(name).getId();
+        return userId;
+    }
 }

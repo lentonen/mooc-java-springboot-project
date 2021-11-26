@@ -23,29 +23,10 @@
   <p>Resize this responsive page to see the effect!</p> 
 </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profiili</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Seurataan</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Seuraajat</a>
-      </li>    
-    </ul>
-      <form th:action="@{/mainPage/}" th:method="POST" class="form-inline my-2 my-lg-0">
-      <input name="name" class="form-control mr-sm-2" type="search" placeholder="Etsi käyttäjiä" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Etsi</button>
-    </form>
-  </div>  
-</nav>
+
+    <nav th:replace="fragments/navigation-logged :: nav">
+        <p>navigation with links and searchbar</p>
+    </nav>      
 
  
         

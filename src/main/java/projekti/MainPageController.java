@@ -42,18 +42,21 @@ public class MainPageController {
         return "redirect:mainPage/"+url;
     }
     
+    
     @GetMapping("/mainPage/{url}")
     public String getOne(Model model, @PathVariable String url) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        model.addAttribute("message", name);
-        return "mainPage";
-    }
-    
-
-    @PostMapping("/mainPage")
-    public String search(Model model, @RequestParam String name) {
-        model.addAttribute("accounts", accountService.findAccounts(name));
-        return "search";
+        
+        // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
+        try {
+            String name = accountRepository.findByUrlAddress(url).getRealname();
+            model.addAttribute("message", name);
+            return "mainPage";
+        
+        // Jos yrl ei löydy, niin edellinen heittää poikkeuksen. Käsitellään poikkeus siten, että ohjataan käyttäjä takaisin omalle sivulle.
+        } catch (NullPointerException e) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String urlException = accountRepository.findByUsername(auth.getName()).getUrlAddress();
+            return "redirect:"+urlException;
+        }
     }
 }

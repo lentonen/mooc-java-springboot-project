@@ -40,7 +40,7 @@ public class AccountController {
             return "redirect:/accounts";
         }
         
-        Account a = new Account(username, realname, passwordEncoder.encode(password), urlAddress, new ArrayList<Account>());
+        Account a = new Account(username, realname, passwordEncoder.encode(password), urlAddress);
         accountRepository.save(a);
         return "redirect:/accounts";
     }
