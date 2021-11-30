@@ -46,11 +46,17 @@ public class AccountService {
     }
     
     
+    /**
+     * Aloittaa seuraamaan käyttäjää
+     * @param realname minkä nimistä käyttäjää aletaan seurata
+     */
     public void startFollow(String realname) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         
         followersRepository.save(new Followers(accountRepository.findByUsername(name), accountRepository.findByRealname(realname)));
+        // TODO: ei voi seurata jo seurattua käyttäjää
+        
 
         //List<Followers> following = accountRepository.findByUsername(name).getFollowing();
         //Account newFollowed = accountRepository.findByUsername(realname);
@@ -103,6 +109,10 @@ public class AccountService {
     }
     
     
+    /**
+     * Palauttaa kirjautuneen käyttäjän id:n
+     * @return kirjautuneen käyttäjän id
+     */
     public Long whoIsLogged() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
