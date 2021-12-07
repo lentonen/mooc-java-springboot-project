@@ -5,6 +5,7 @@
  */
 package projekti;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -27,5 +28,12 @@ public class Followers extends AbstractPersistable<Long> {
     
     @ManyToOne
     private Account to;
+    
+    LocalDate followDate = java.time.LocalDate.now();
+    
+    Followers(Account from, Account to) {
+        this.from = from;
+        this.to = to;
+    }
     
 }
