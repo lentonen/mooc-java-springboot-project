@@ -38,17 +38,22 @@ public class FollowersPageController {
         // Etsitään sisällä olevan käyttäjän ID ja se, ketä käyttäjä seuraa
 
         Long userId = accountService.whoIsLogged();
-        List<Account> accounts = accountService.followers(userId);
+        List<Account> followers = accountService.followers(userId);
 
-        model.addAttribute("accounts", accounts);
+        model.addAttribute("followers", followers);
         model.addAttribute("message", accountService.getLoggedNickame());
         return "followersPage";
     }
     
-    @PostMapping("/followersPage/{id}")
-     public String follow(Model model, @PathVariable(value = "id") Long id) {
-         //accountService.preventFollowing(id);
-         return "redirect:/followPage";
-     }
-    
+    @PostMapping("/followersPage/{id}/prevent")
+    public String preventFollow(Model model, @PathVariable(value = "id") Long id) {
+        accountService.preventFollow(id);
+        return "redirect:/followersPage";
+    }
+     
+    @PostMapping("/followersPage/{id}/removePrevent")
+    public String removePrevent(Model model, @PathVariable(value = "id") Long id) {
+        accountService.removePrevent(id);
+        return "redirect:/followersPage";
+    } 
 }

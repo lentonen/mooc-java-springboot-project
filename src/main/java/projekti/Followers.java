@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- *
+ * Follers-olio joka tietää kuka seuraa ketäkin. Oliolla tiedossa myös ajankohta, jolloin alettu seurata.
+ * Olio tietää myös, jos käyttäjä on estänyt seuraamisen.
  * @author Henri
  */
 @Entity
@@ -30,6 +31,7 @@ public class Followers extends AbstractPersistable<Long> {
     private Account to;
     
     LocalDate followDate = java.time.LocalDate.now();
+    Boolean prevent = false;
     
     Followers(Account from, Account to) {
         this.from = from;

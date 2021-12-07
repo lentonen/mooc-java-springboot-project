@@ -86,6 +86,7 @@ public class AccountService {
         return accountRepository.findByNickname(nickname).getUrlAddress();
     }
     
+    
     /**
      * Palauttaa listan seuratuista henkilöistä.
      * @param follow lista followers-olioita, joiden joukosta seurattuja henkilöitä etsitään
@@ -117,9 +118,7 @@ public class AccountService {
                 accounts.add(follower);
             }
         }
-        return accounts;
-        
-        
+        return accounts;     
     }
     
     
@@ -210,5 +209,29 @@ public class AccountService {
         if (followersRepository.findByFromIdAndToId(from, to) == null)
             return false;
         return true;     
+    }
+    
+    
+    /**
+     * Estetään käyttäjän seuraaminen
+     * @param from kenen käyttäjän seuraaminen estetään
+     */
+    public void preventFollow(Long from) {
+        Long to = getLoggedId();
+        Followers f = followersRepository.findByFromIdAndToId(from, to);
+        f.setPrevent(true);
+        followersRepository.saveAndFlush(f);
+    }
+    
+    
+    /**
+     * Sallitaan käyttäjän seuraaminen
+     * @param from kenen käyttäjän seuraaminen sallitaan
+     */
+    public void removePrevent(Long from) {
+        Long to = getLoggedId();
+        Followers f = followersRepository.findByFromIdAndToId(from, to);
+        f.setPrevent(false);
+        followersRepository.saveAndFlush(f);
     }
 }

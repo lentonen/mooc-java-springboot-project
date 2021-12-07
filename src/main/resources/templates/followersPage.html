@@ -38,11 +38,18 @@
         
 <div class="col-sm-8">
         <ul>
-            <li th:each="account : ${accounts}">
-                <span display="inline-block"  th:text="${account.nickname}">Real name</span>
-                <form display="inline-block" th:action="@{/followersPage/{id}(id=${account.id})}" th:method="POST">
-                    <input type="submit" value="Estä seuraaminen"/>
-                </form>
+            <li th:each="follower : ${followers}">
+                <span display="inline-block"  th:text="${follower.nickname}">Nickname</span>
+                <span>
+                    <form display="inline-block" th:action="@{/followersPage/{id}/prevent(id=${follower.id})}" th:method="POST">
+                        <input type="submit" value="Estä seuraaminen"/>
+                    </form>
+                </span>
+                <span>
+                    <form display="inline-block" th:action="@{/followersPage/{id}/removePrevent(id=${follower.id})}" th:method="POST">
+                        <input type="submit" value="Salli seuraaminen"/>
+                    </form>
+                </span>
             </li>
         </ul>
     </div>
