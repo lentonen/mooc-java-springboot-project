@@ -31,7 +31,7 @@
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-16">
-      <h2>Seuratut käyttäjät</h2>
+      <h2>Seuraajat</h2>
     </div>
   </div>
 </div>
@@ -40,8 +40,8 @@
         <ul>
             <li th:each="account : ${accounts}">
                 <span display="inline-block"  th:text="${account.nickname}">Real name</span>
-                <form display="inline-block" th:action="@{/followPage/{id}(id=${account.id})}" th:method="POST">
-                    <input type="submit" value="Lopeta seuraaminen"/>
+                <form display="inline-block" th:action="@{/followersPage/{id}(id=${account.id})}" th:method="POST">
+                    <input type="submit" value="Estä seuraaminen"/>
                 </form>
             </li>
         </ul>

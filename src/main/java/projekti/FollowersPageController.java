@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author Henri
  */
 @Controller
-public class FollowPageController {
+public class FollowersPageController {
     
     @Autowired
     FollowersRepository followersRepository;
@@ -33,21 +33,21 @@ public class FollowPageController {
     AccountService accountService; 
     
     
-    @GetMapping("/followPage")
+    @GetMapping("/followersPage")
     public String show(Model model) {
         // Etsitään sisällä olevan käyttäjän ID ja se, ketä käyttäjä seuraa
 
         Long userId = accountService.whoIsLogged();
-        List<Account> accounts = accountService.isFollowing(userId);
+        List<Account> accounts = accountService.followers(userId);
 
         model.addAttribute("accounts", accounts);
         model.addAttribute("message", accountService.getLoggedNickame());
-        return "followPage";
+        return "followersPage";
     }
     
-    @PostMapping("/followPage/{id}")
+    @PostMapping("/followersPage/{id}")
      public String follow(Model model, @PathVariable(value = "id") Long id) {
-         accountService.stopFollowing(id);
+         //accountService.preventFollowing(id);
          return "redirect:/followPage";
      }
     

@@ -105,6 +105,25 @@ public class AccountService {
     
     
     /**
+     * Palauttaa listan seuraajista
+     * @param listFollowers lista followers-olioita, joiden joukosta seuraajat haetaan
+     * @return lista seuraajista
+     */
+    public List<Account> findFollowers(ArrayList<Followers> listFollowers) {
+        List<Account> accounts = new ArrayList<>();
+        for (Followers followers : listFollowers) {
+            Account follower  = followers.getFrom();
+            if (!accounts.contains(follower)) {
+                accounts.add(follower);
+            }
+        }
+        return accounts;
+        
+        
+    }
+    
+    
+    /**
      * Lopetaan käyttäjän seuraaminen
      * @param id kenen seuraaminen lopetetaan
      */
@@ -117,12 +136,23 @@ public class AccountService {
     
     /**
      * Palauttaa listan käyttäjän seuraamista tileistä.
-     * @param userId
-     * @return 
+     * @param userId kenen käyttäjän seuraamia tilejä etsitään
+     * @return lista seuratuista tileistä
      */
     public List<Account> isFollowing(Long userId) {
      ArrayList<Followers> follow = followersRepository.findByFromId(userId);
      return findFollowed(follow);
+    }
+    
+    
+    /**
+     * Palauttaa listan seuraajista
+     * @param userId kenen käyttäjän seuraajia etsitään
+     * @return lista seuraajista
+     */
+    public List<Account> followers(Long userId) {
+        ArrayList<Followers> followers = followersRepository.findByToId(userId);
+        return findFollowers(followers);
     }
     
     
