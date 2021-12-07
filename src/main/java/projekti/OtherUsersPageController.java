@@ -34,6 +34,8 @@ public class OtherUsersPageController {
         String otherUserNickname = accountRepository.findByUrlAddress(url).getNickname();
         model.addAttribute("nickname", otherUserNickname);
         model.addAttribute("user", accountRepository.findByUrlAddress(url));
+        boolean follows = accountService.follows(accountService.getLoggedId(), accountRepository.findByUrlAddress(url).getId());
+        model.addAttribute("followBoolean", follows);
         return "OtherUsersPage";
     }
     

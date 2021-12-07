@@ -150,4 +150,28 @@ public class AccountService {
         String username =  auth.getName();
         return accountRepository.findByUsername(username).getNickname();
     }
+    
+    
+    /**
+     * Palauttaa kirjautuneen käyttäjän ID:n
+     * @return kirjautuneen käyttäjän id
+     */
+    public Long getLoggedId() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username =  auth.getName();
+        return accountRepository.findByUsername(username).getId();
+    }
+    
+    
+    /**
+     * Kertoo seuraako käyttäjä toista käyttäjää
+     * @param from kuka seuraa
+     * @param to ketä seurataan
+     * @return true jos seurataan, false jo ei seurata
+     */
+    public boolean follows(Long from, Long to) {
+        if (followersRepository.findByFromIdAndToId(from, to) == null)
+            return false;
+        return true;     
+    }
 }
