@@ -58,8 +58,13 @@
     <div class="col-sm-8">
       <h2 id ="username" th:text="${nickname}">Username </h2>
       <span th:if="${!followBoolean}">
-        <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}(url=${user.urlAddress})}" th:method="POST">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow/Unfollow</button>
+        <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/follow(url=${user.urlAddress})}" th:method="POST">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button>
+        </form>
+      </span>
+      <span th:unless="${!followBoolean}">
+        <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/unfollow(url=${user.urlAddress})}" th:method="POST">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Unfollow</button>
         </form>
       </span>
       

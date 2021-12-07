@@ -66,12 +66,19 @@ public class AccountService {
     
     
     public void startFollowUrl(String urlAddress) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        Long from = accountRepository.findByUsername(username).getId();
+        Account from = accountRepository.findByNickname(getLoggedNickame());
+        Account to = accountRepository.findByUrlAddress(urlAddress);
+        if (followersRepository.findByFromIdAndToId(from.getId(), to.getId()) == null) 
+            followersRepository.save(new Followers(from, to));
+    }
+    
+    
+    public void stopFollowUrl(String urlAddress) {
+        Long from = getLoggedId();
         Long to = accountRepository.findByUrlAddress(urlAddress).getId();
-        if (followersRepository.findByFromIdAndToId(from, to) == null) 
-            followersRepository.save(new Followers(accountRepository.findByUsername(username), accountRepository.findByUrlAddress(urlAddress)));
+        Followers f = followersRepository.findByFromIdAndToId(from, to);
+        if (f != null)
+            followersRepository.delete(f);
     }
     
     
