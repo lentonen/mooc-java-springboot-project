@@ -65,6 +65,16 @@ public class AccountService {
     }
     
     
+    public void startFollowUrl(String urlAddress) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        Long from = accountRepository.findByUsername(username).getId();
+        Long to = accountRepository.findByUrlAddress(urlAddress).getId();
+        if (followersRepository.findByFromIdAndToId(from, to) == null) 
+            followersRepository.save(new Followers(accountRepository.findByUsername(username), accountRepository.findByUrlAddress(urlAddress)));
+    }
+    
+    
     public String getUrl(String nickname) {
         return accountRepository.findByNickname(nickname).getUrlAddress();
     }

@@ -39,9 +39,7 @@
             <li th:each="account : ${accounts}">
                  <a name="linkToUser" th:href="@{'/user/' + ${account.urlAddress}}"><span display="inline-block"  th:text="${account.nickname}">Nickname</span></a>
                 
-                <form display="inline-block" th:action="@{/search/follow/{nickname}(nickname=${account.nickname})}" th:method="POST">
-                    <input type="submit" value="Seuraa"/>
-                </form>
+
             </li>
         </ul>
     </div>

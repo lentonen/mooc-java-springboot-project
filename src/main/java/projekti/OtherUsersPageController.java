@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -32,7 +33,15 @@ public class OtherUsersPageController {
         model.addAttribute("message", nickname);
         String otherUserNickname = accountRepository.findByUrlAddress(url).getNickname();
         model.addAttribute("nickname", otherUserNickname);
+        model.addAttribute("user", accountRepository.findByUrlAddress(url));
         return "OtherUsersPage";
     }
+    
+    
+    @PostMapping("/user/{url}")
+    public String follow(Model model, @PathVariable String url) {
+         accountService.startFollowUrl(url);
+         return "redirect:/user/"+url;
+     }
  
 }
