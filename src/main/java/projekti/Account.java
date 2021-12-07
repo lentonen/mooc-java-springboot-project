@@ -21,7 +21,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Account extends AbstractPersistable<Long> {
     
     private String username;
-    private String realname;
+    private String nickname;
     private String password;
     private String urlAddress;
     
@@ -35,7 +35,7 @@ public class Account extends AbstractPersistable<Long> {
     
     Account (String username, String realname, String password, String urlAddress) {
         this.setUsername(username);
-        this.setRealname(realname);
+        this.setNickname(realname);
         this.setPassword(password);
         this.setUrlAddress(urlAddress);
     }

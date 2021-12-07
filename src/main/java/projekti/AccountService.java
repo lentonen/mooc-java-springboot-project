@@ -35,7 +35,7 @@ public class AccountService {
      */
     public List<Account> findAccounts(String searchString) {
         // Haetaan hakusanaa vastaava lista
-        List<Account> lista = accountRepository.findByRealnameStartingWith(searchString);
+        List<Account> lista = accountRepository.findByNicknameContainingIgnoreCase(searchString);
         
         // Poistetaan kirjautunut käyttäjä listasta
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -48,13 +48,13 @@ public class AccountService {
     
     /**
      * Aloittaa seuraamaan käyttäjää
-     * @param realname minkä nimistä käyttäjää aletaan seurata
+     * @param nickname minkä nimistä käyttäjää aletaan seurata
      */
-    public void startFollow(String realname) {
+    public void startFollow(String nickname) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
+        String username = auth.getName();
         
-        followersRepository.save(new Followers(accountRepository.findByUsername(name), accountRepository.findByRealname(realname)));
+        followersRepository.save(new Followers(accountRepository.findByUsername(username), accountRepository.findByNickname(nickname)));
         // TODO: ei voi seurata jo seurattua käyttäjää
         
 
@@ -65,8 +65,8 @@ public class AccountService {
     }
     
     
-    public String getUrl(String realname) {
-        return accountRepository.findByRealname(realname).getUrlAddress();
+    public String getUrl(String nickname) {
+        return accountRepository.findByNickname(nickname).getUrlAddress();
     }
     
     /**
@@ -118,5 +118,26 @@ public class AccountService {
         String name = auth.getName();
         Long userId = accountRepository.findByUsername(name).getId();
         return userId;
+    }
+    
+    
+    /**
+     * Palauttaa kirjautuneen käyttäjän usernamen
+     * @return kirjautuneen käyttäjän id
+     */
+    public String getLoggedName() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
+    }
+    
+    
+    /**
+     * Palauttaa kirjautuneen käyttäjän nicknamen
+     * @return kirjautuneen käyttäjän id
+     */
+    public String getLoggedNickame() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username =  auth.getName();
+        return accountRepository.findByUsername(username).getNickname();
     }
 }

@@ -48,7 +48,7 @@ public class MainPageController {
         
         // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
         try {
-            String name = accountRepository.findByUrlAddress(url).getRealname();
+            String name = accountRepository.findByUrlAddress(url).getNickname();
             model.addAttribute("message", name);
             return "mainPage";
         

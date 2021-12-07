@@ -35,12 +35,12 @@ public class AccountController {
     }
 
     @PostMapping("/accounts")
-    public String add(@RequestParam String username, @RequestParam String realname, @RequestParam String password, @RequestParam String urlAddress) {
-        if (accountRepository.findByUsername(username) != null) {
+    public String add(@RequestParam String username, @RequestParam String nickname, @RequestParam String password, @RequestParam String urlAddress) {
+        if (accountRepository.findByUsername(username) != null || accountRepository.findByNickname(nickname) != null || accountRepository.findByUrlAddress(urlAddress) != null) {
             return "redirect:/accounts";
         }
         
-        Account a = new Account(username, realname, passwordEncoder.encode(password), urlAddress);
+        Account a = new Account(username, nickname, passwordEncoder.encode(password), urlAddress);
         accountRepository.save(a);
         return "redirect:/accounts";
     }

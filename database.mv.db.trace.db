@@ -1,0 +1,186 @@
+2021-12-02 09:56:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+TRUNCATE TABLE Account [42102-200]
+2021-12-02 09:59:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+TRUNCATE TABLE Account [42102-200]
+2021-12-02 10:02:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+DELETE FROM Account; [42102-200]
+2021-12-02 10:02:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+DELETE FROM Account; [42102-200]
+2021-12-02 10:08:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+DELETE FROM Account; [42102-200]
+2021-12-02 10:26:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * from Account [42102-200]
+2021-12-02 10:27:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:27:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:34:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:35:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:40:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:50:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SQL[*]> SELECT * FROM ACCOUNT"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SQL> SELECT * FROM ACCOUNT [42001-200]
+2021-12-02 10:50:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:59:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 10:59:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:00:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:00:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:01:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:01:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:02:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM Account [42102-200]
+2021-12-02 11:02:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM Account [42102-200]
+2021-12-02 11:02:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:03:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:04:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:04:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:04:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:06:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:06:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+select * from account [42102-200]
+2021-12-02 11:06:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:09:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:09:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 11:24:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+DELETE FROM Account; [42102-200]
+2021-12-02 11:54:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNTS" not found; SQL statement:
+DELETE FROM Accounts; [42102-200]
+2021-12-02 11:54:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TUTORIALS_TBL" already exists; SQL statement:
+CREATE TABLE tutorials_tbl ( id INT NOT NULL,title VARCHAR(50) NOT NULL, author VARCHAR(20) NOT NULL, submission_date DATE ); [42101-200]
+2021-12-02 11:58:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TUTORIALS_TBL" already exists; SQL statement:
+CREATE TABLE tutorials_tbl ( id INT NOT NULL,title VARCHAR(50) NOT NULL, author VARCHAR(20) NOT NULL, submission_date DATE ); [42101-200]
+2021-12-02 12:02:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "ID"; SQL statement:
+CREATE TABLE ACCOUNT ( id,password, realname, url_address,username); [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.setColumns(Table.java:441)
+	at org.h2.table.TableBase.<init>(TableBase.java:75)
+	at org.h2.table.RegularTable.<init>(RegularTable.java:126)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:113)
+	at org.h2.mvstore.db.MVTableEngine$Store.createTable(MVTableEngine.java:253)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:127)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:41)
+	at org.h2.schema.Schema.createTable(Schema.java:697)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:111)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:240)
+2021-12-02 12:02:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "PASSWORD"; SQL statement:
+CREATE TABLE ACCOUNT ( id LONG,password, realname, url_address,username); [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.setColumns(Table.java:441)
+	at org.h2.table.TableBase.<init>(TableBase.java:75)
+	at org.h2.table.RegularTable.<init>(RegularTable.java:126)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:113)
+	at org.h2.mvstore.db.MVTableEngine$Store.createTable(MVTableEngine.java:253)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:127)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:41)
+	at org.h2.schema.Schema.createTable(Schema.java:697)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:111)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:240)
+2021-12-02 12:02:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "REALNAME"; SQL statement:
+CREATE TABLE ACCOUNT ( id LONG,password VARCHAR, realname, url_address,username); [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.setColumns(Table.java:441)
+	at org.h2.table.TableBase.<init>(TableBase.java:75)
+	at org.h2.table.RegularTable.<init>(RegularTable.java:126)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:113)
+	at org.h2.mvstore.db.MVTableEngine$Store.createTable(MVTableEngine.java:253)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:127)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:41)
+	at org.h2.schema.Schema.createTable(Schema.java:697)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:111)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:240)
+2021-12-02 12:04:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE ACCOUNT ( id LONG,password VARCHAR, realname VARCHAR, url_address VARCHAR,username VARCHAR); [42101-200]
+2021-12-02 12:08:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE ACCOUNT ( id LONG,password VARCHAR, realname VARCHAR, url_address VARCHAR,username VARCHAR); [42101-200]
+2021-12-02 12:09:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PERSON" not found; SQL statement:
+SELECT * FROM person [42102-200]
+2021-12-02 12:09:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM Account [42102-200]
+2021-12-02 12:18:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 12:19:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found; SQL statement:
+SELECT * FROM ACCOUNT [42102-200]
+2021-12-02 12:20:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE ACCOUNT ( id LONG,password VARCHAR, realname VARCHAR, url_address VARCHAR,username VARCHAR); [42101-200]
