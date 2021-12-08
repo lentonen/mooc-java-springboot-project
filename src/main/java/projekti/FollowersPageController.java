@@ -35,10 +35,11 @@ public class FollowersPageController {
     
     @GetMapping("/followersPage")
     public String show(Model model) {
-        // Etsitään sisällä olevan käyttäjän ID ja se, ketä käyttäjä seuraa
+        
+// Etsitään sisällä olevan käyttäjän ID ja se, ketä käyttäjä seuraa
+        String nickname = accountService.getLoggedNickame();
+        List<Followers> followers = accountRepository.findByNickname(nickname).getFollowers();
 
-        Long userId = accountService.whoIsLogged();
-        List<Account> followers = accountService.followers(userId);
 
         model.addAttribute("followers", followers);
         model.addAttribute("message", accountService.getLoggedNickame());
