@@ -1,6 +1,7 @@
 package projekti;
 
 import java.io.IOException;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,10 @@ public class albumPageContoller {
     
     @GetMapping("/album")
     public String show() {
-        return "redirect:/album/1";
+        Long firstId = pictureRepository.getNextId(0L);
+        if (firstId == null)
+            return "redirect:/album/1";
+        return "redirect:/album/"+firstId;
     }
     
     @GetMapping("/album/{id}")
@@ -35,21 +39,24 @@ public class albumPageContoller {
             model.addAttribute("current", pictureRepository.getOne(id).getId());
         }
         
-        for (Long i = id-1; i >= 0; i--) {
-            if (pictureRepository.existsById(i)){
-                FileObject fo = pictureRepository.getOne(i);
-                model.addAttribute("previous", fo.getId());
-                break;  
-            }
+        Long nextId = pictureRepository.getNextId(id);
+        if (nextId != null){
+            FileObject fo = pictureRepository.getOne(nextId);
+            model.addAttribute("next", fo.getId()); 
         }
-            
-        for (Long i = id+1; i <= id+1000; i++) {
-            if (pictureRepository.existsById(i)){
-                FileObject fo = pictureRepository.getOne(i);
-                model.addAttribute("next", fo.getId());
-                break;  
-            }
-        }        
+        
+        Long previousId = pictureRepository.getPreviousId(id);
+        if (previousId != null) {
+            FileObject fo = pictureRepository.getOne(previousId);
+            model.addAttribute("previous", fo.getId());
+        }
+
+        // Viedään tieto siitä, onko nykyinen kuva profiilikuva
+        boolean isProfilePic = false;
+        if (Objects.equals(accountService.getLoggedAccount().getProfilePictureId(), id)){
+            isProfilePic = true;
+        }     
+        model.addAttribute("booleanProfilePic", isProfilePic);
         return "albumPage";
     }
     
@@ -68,5 +75,13 @@ public class albumPageContoller {
         fo.setOwner(accountService.getLoggedAccount());
         pictureRepository.save(fo);
         return "redirect:/album";
+    }
+    
+    
+    @PostMapping("/album/{id}/setProfilePicture")
+    public String setProfilePicture(@PathVariable Long id) {
+        accountService.setProfilePicture(id);
+   
+        return "redirect:/album/"+id;
     }
 }

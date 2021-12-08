@@ -244,4 +244,11 @@ public class AccountService {
         f.setPrevent(false);
         followersRepository.saveAndFlush(f);
     }
+    
+    
+    public void setProfilePicture(Long pictureId) {
+        String username = getLoggedName();
+        accountRepository.findByUsername(username).setProfilePictureId(pictureId);
+        accountRepository.flush();
+    }
 }

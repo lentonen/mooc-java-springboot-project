@@ -24,7 +24,7 @@ public class Account extends AbstractPersistable<Long> {
     private String nickname;
     private String password;
     private String urlAddress;
-    
+    private Long profilePictureId;
     
     @OneToMany(mappedBy="to")
     private List<Followers> followers = new ArrayList<>();
