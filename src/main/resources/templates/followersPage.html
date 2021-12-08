@@ -36,22 +36,24 @@
   </div>
 </div>
 
-<ul>
-    <li th:each="follower : ${followers}" >
-      <span display="inline-block"  th:text="${follower.from.nickname}">nickname</span>
-      <span display="inline-block"  th:text="${follower.followDate}">pvm</span>
-      <span th:if="${!follower.prevent}"> 
+        
+<div class="container">
+    <div class="row" th:each="follower : ${followers}">
+        <div class="col-2"> <span display="inline-block"  th:text="${follower.from.nickname}">nickname</span></div>
+        <div class="col-2"><span display="inline-block"  th:text="${follower.followDate}">pvm</span></div>
+        <div class="col-2"><span th:if="${!follower.prevent}"> 
           <form display="inline-block" th:action="@{/followersPage/{id}/prevent(id=${follower.from.id})}" th:method="POST">
-              <input type="submit" value="Estä seuraaminen"/>
+              <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"/>Estä seuraaminen</button>
           </form>
       </span>
       <span th:unless="${!follower.prevent}">
           <form display="inline-block" th:action="@{/followersPage/{id}/removePrevent(id=${follower.from.id})}" th:method="POST">
-                <input type="submit" value="Salli seuraaminen"/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"/>Salli seuraaminen</button>
           </form>
       </span>
-    </li>
-</ul>
+        </div> 
+    </div>
+</div>
 
 
 <div class="jumbotron text-center" style="margin-bottom:0">

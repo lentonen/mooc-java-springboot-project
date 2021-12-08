@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello world</title>
+        <title>Album</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,37 +20,44 @@
         
         <div class="jumbotron text-center" style="margin-bottom:0">
   <h1 id ="header" th:text="${'LeisBook / ' + message}">LeisBook / nickname </h1>
-  <p></p> 
 </div>
 
-
-    <nav th:replace="fragments/navigation-logged :: nav">
-        <p>navigation with links and searchbar</p>
-    </nav>      
+<nav th:replace="fragments/navigation-logged :: nav">
+    <p>navigation with links and searchbar</p>
+</nav>
 
  
         
 <div class="container" style="margin-top:30px">
   <div class="row">
-    <div class="col-sm-4">
-      <div class="fakeimg">Profiilikuva</div>
-      <p>Kuvateksti</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Kuva-albumi</a>
-        </li> 
-      </ul>
-      
-      <hr class="d-sm-none">
-    </div>
-    <div class="col-sm-8">
-      <h2>Viestejä</h2>
-      <ul>
-            <li th:each="account : ${accounts}" th:text="${account.realname}">Tänne tulee viestejä</li>
-      </ul>
-    </div>
+    <div class="col-sm-16">
+      <h2>Kuvat (<span th:text="${count}">count</span>)</h2>
+    </div>      
   </div>
+     <div th:if="${current != null}">
+            <img th:src="@{/album/{id}/content(id=${current})}"/>
+        </div>
+
+        <div th:if="${previous != null}">
+            <a th:href="@{/album/{id}(id=${previous})}">Previous</a>
+        </div>
+
+        <div th:if="${next != null}">
+            <a th:href="@{/album/{id}(id=${next})}">Next</a>
+        </div>
+
+        <h2>Add new content</h2>
+
+        <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
+            <input type="file" name="file" id="file"/>
+            <input type="submit" value="Add!"/>
+        </form>
 </div>
+
+
+
+       
+
 
 <div class="jumbotron text-center" style="margin-bottom:0">
   <p>Footer</p>

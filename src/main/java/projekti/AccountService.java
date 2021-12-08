@@ -198,6 +198,16 @@ public class AccountService {
         return accountRepository.findByUsername(username).getId();
     }
     
+    /**
+     * Palauttaa kirjautuneen käyttäjän
+     * @return kirjautuneen käyttäjän Accountin
+     */
+    public Account getLoggedAccount() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username =  auth.getName();
+        return accountRepository.findByUsername(username);
+    }
+    
     
     /**
      * Kertoo seuraako käyttäjä toista käyttäjää

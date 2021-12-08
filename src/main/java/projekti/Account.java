@@ -25,11 +25,14 @@ public class Account extends AbstractPersistable<Long> {
     private String password;
     private String urlAddress;
     
+    
     @OneToMany(mappedBy="to")
     private List<Followers> followers = new ArrayList<>();
     
     @OneToMany(mappedBy="from")
     private List<Followers> following;
+    
+    
 
 
     
