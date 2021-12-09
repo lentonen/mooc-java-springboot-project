@@ -10,6 +10,9 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PictureRepository  extends JpaRepository<FileObject, Long> {
 //
+    FileObject findTop1ByIdLessThanAndOwnerIdEqualsOrderByIdDesc(Long id, Long accountId);
+    
+    // TODO: muuta nämä JPA:ksi
     @Query(value = "SELECT TOP 1 fo.id FROM file_object fo WHERE fo.id < :id AND fo.owner_id = :accountId ORDER BY fo.id DESC", nativeQuery = true)
     Long getPreviousId(@Param("id") Long id, @Param("accountId") Long accountId);
     

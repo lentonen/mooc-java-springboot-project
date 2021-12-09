@@ -69,11 +69,18 @@ public class albumPageContoller {
             model.addAttribute("next", fo.getId()); 
         }
         
-        Long previousId = pictureRepository.getPreviousId(id, accountId);
-        if (previousId != null) {
+        try {
+            Long previousId = pictureRepository.findTop1ByIdLessThanAndOwnerIdEqualsOrderByIdDesc(id, accountId).getId();
             FileObject fo = pictureRepository.getOne(previousId);
             model.addAttribute("previous", fo.getId());
+        } catch (Exception e) {
+            
         }
+        // TODO: muuta ensin JPA-repository ja sen jälkeen metodien nimet täällä
+        //if (previousId != null) {
+        //    FileObject fo = pictureRepository.getOne(previousId);
+        //    model.addAttribute("previous", fo.getId());
+        //}
 
         // Viedään tieto siitä, onko nykyinen kuva profiilikuva
         boolean isProfilePic = false;
