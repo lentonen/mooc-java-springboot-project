@@ -24,7 +24,7 @@ public class albumPageContoller {
     AccountService accountService;
     
     @GetMapping("/album/test")
-    public String show(Model model) {
+    public String showTest(Model model) {
             String name = accountService.getLoggedNickame();
             Long accountId = accountService.getLoggedId();
             model.addAttribute("message", name);
