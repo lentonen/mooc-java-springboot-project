@@ -23,16 +23,6 @@ public class albumPageContoller {
     @Autowired
     AccountService accountService;
     
-    @GetMapping("/album/test")
-    public String showTest(Model model) {
-            Long firstId = pictureRepository.getNext(0L, accountService.getLoggedId()).getId();
-            String name = accountService.getLoggedNickame();
-            Long accountId = accountService.getLoggedId();
-            model.addAttribute("message", name);
-            model.addAttribute("count", pictureRepository.countByOwnerId(accountId));
-            return "albumPage";
-    }
-    
     @GetMapping("/album")
     public String show(Model model) {
         try {
@@ -51,18 +41,21 @@ public class albumPageContoller {
     public String showPicture(Model model, @PathVariable Long id) {
         String name = accountService.getLoggedNickame();
         Long accountId = accountService.getLoggedId();
+        model.addAttribute("message", name);
+        model.addAttribute("count", pictureRepository.countByOwnerId(accountId));
         
         // Käyttäjä ei näe muiden käyttäjien omaa albumia
         if (!pictureRepository.existsByOwnerIdAndId(accountId, id))
+            // TODO: Tee tähän boolean-toiminnallisuus siten, että jos katsotaan muiden albumia, niin tällöin ei näytetä
+            // ollenkaan kuvien lisäämiseen tarkoitettua osiota. Tällöin samaa album-sivua voidaan käyttää myös muiden albumien tarkasteluun.
             return "redirect:/album";
         
-        model.addAttribute("message", name);
-        model.addAttribute("count", pictureRepository.countByOwnerId(accountId));
-       
+        // Asetetaan id:tä vastaava kuva albumiin
         if (pictureRepository.existsById(id)) {
             model.addAttribute("current", pictureRepository.getOne(id).getId());
         }
         
+        // Viedään tieto seuraavan kuvan id:stä.
         try {
             Long nextId = pictureRepository.getNext(id, accountId).getId();
             FileObject fo = pictureRepository.getOne(nextId);
@@ -71,6 +64,7 @@ public class albumPageContoller {
             // Do nothing
         }
         
+        // viedään tieto edellisen kuvan id:stä.
         try {
             Long previousId = pictureRepository.getPrevious(id, accountId).getId();
             FileObject fo = pictureRepository.getOne(previousId);
@@ -78,12 +72,6 @@ public class albumPageContoller {
         } catch (Exception e) {
             // Do nothing
         }
-        
-        // TODO: muuta ensin JPA-repository ja sen jälkeen metodien nimet täällä
-        //if (previousId != null) {
-        //    FileObject fo = pictureRepository.getOne(previousId);
-        //    model.addAttribute("previous", fo.getId());
-        //}
 
         // Viedään tieto siitä, onko nykyinen kuva profiilikuva
         boolean isProfilePic = false;
