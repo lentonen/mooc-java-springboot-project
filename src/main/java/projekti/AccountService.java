@@ -245,7 +245,10 @@ public class AccountService {
         followersRepository.saveAndFlush(f);
     }
     
-    
+    /**
+     * Asettaa annetun ID:n käyttäjän profiilikuvan ID:ksi
+     * @param pictureId Kuva joka halutaan profiilikuvaksi
+     */
     public void setProfilePicture(Long pictureId) {
         String username = getLoggedName();
         accountRepository.findByUsername(username).setProfilePictureId(pictureId);

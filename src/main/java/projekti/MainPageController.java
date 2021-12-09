@@ -48,8 +48,9 @@ public class MainPageController {
         
         // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
         try {
-            String name = accountRepository.findByUrlAddress(url).getNickname();
+            String name = accountService.getLoggedNickame();
             model.addAttribute("message", name);
+            model.addAttribute("profilePictureId", accountRepository.findByNickname(name).getProfilePictureId());
             return "mainPage";
         
         // Jos yrl ei löydy, niin edellinen heittää poikkeuksen. Käsitellään poikkeus siten, että ohjataan käyttäjä takaisin omalle sivulle.

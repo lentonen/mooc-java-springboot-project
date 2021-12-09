@@ -33,8 +33,10 @@
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-4">
-      <div class="fakeimg">Profiilikuva</div>
-      <p>Kuvateksti</p>
+      <div th:if="${profilePictureId != null}">
+          <img th:src="@{/album/{id}/content(id=${profilePictureId})}" width="300px"/>
+      </div>
+      <div th:unless="${profilePictureId != null}" class="fakeimg">Ei vielä profiilikuvaa</div>
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <a class="nav-link active" href="#">Kuva-albumi</a>
