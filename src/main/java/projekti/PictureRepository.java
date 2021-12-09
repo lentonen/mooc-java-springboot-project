@@ -10,10 +10,16 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PictureRepository  extends JpaRepository<FileObject, Long> {
 //
-    @Query(value = "SELECT TOP 1 fo.id FROM file_object fo WHERE fo.id < :id ORDER BY fo.id DESC", nativeQuery = true)
-    Long getPreviousId(@Param("id") Long id);
+    @Query(value = "SELECT TOP 1 fo.id FROM file_object fo WHERE fo.id < :id AND fo.owner_id = :accountId ORDER BY fo.id DESC", nativeQuery = true)
+    Long getPreviousId(@Param("id") Long id, @Param("accountId") Long accountId);
     
-    @Query(value = "SELECT TOP 1 fo.id FROM file_object fo WHERE fo.id > :id ORDER BY fo.id ASC", nativeQuery = true)
-    Long getNextId(@Param("id") Long id);
+    @Query(value = "SELECT TOP 1 fo.id FROM file_object fo WHERE fo.id > :id AND fo.owner_id = :accountId ORDER BY fo.id ASC", nativeQuery = true)
+    Long getNextId(@Param("id") Long id, @Param("accountId") Long accountId);
+    
+    @Query(value = "SELECT COUNT(id) FROM file_object fo WHERE fo.owner_id = :accountId", nativeQuery = true)
+    Long getPictureCount(@Param("accountId") Long accountId);
+    
+    @Query(value = "SELECT COUNT(id) FROM file_object fo WHERE fo.owner_id = :accountId AND fo.id = :id", nativeQuery = true)
+    Long countByAccountIdAndPictureId(@Param("accountId") Long accountId, @Param("id") Long id);
 }
         

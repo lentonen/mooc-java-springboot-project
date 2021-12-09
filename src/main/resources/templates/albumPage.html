@@ -35,7 +35,7 @@
     </div>      
   </div>
      <div th:if="${current != null}">
-            <img th:src="@{/album/{id}/content(id=${current})}"/>
+            <img th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
         </div>
 
         <div th:if="${previous != null}">
@@ -49,6 +49,11 @@
         <div>
             <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
                 <input type="submit" value="Aseta profiilikuvaksi"/>
+            </form>
+        </div>
+        <div>
+            <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
+                <input type="submit" value="Poista kuva"/>
             </form>
         </div>
 

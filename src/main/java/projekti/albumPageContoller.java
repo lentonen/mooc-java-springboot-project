@@ -24,28 +24,42 @@ public class albumPageContoller {
     AccountService accountService;
     
     @GetMapping("/album")
-    public String show() {
-        Long firstId = pictureRepository.getNextId(0L);
-        if (firstId == null)
-            return "redirect:/album/1";
+    public String show(Model model) {
+        Long firstId = pictureRepository.getNextId(0L, accountService.getLoggedId());
+        if (firstId == null) {
+            String name = accountService.getLoggedNickame();
+            Long accountId = accountService.getLoggedId();
+            model.addAttribute("message", name);
+            model.addAttribute("count", pictureRepository.getPictureCount(accountId));
+            return "albumPage";
+        }
+            
         return "redirect:/album/"+firstId;
     }
     
     @GetMapping("/album/{id}")
     public String showPicture(Model model, @PathVariable Long id) {
-        model.addAttribute("count", pictureRepository.count());
+        String name = accountService.getLoggedNickame();
+        Long accountId = accountService.getLoggedId();
+        
+        // Käyttäjä ei näe muiden käyttäjien omaa albumia
+        if (pictureRepository.countByAccountIdAndPictureId(accountId, id) == 0)
+            return "redirect:/album";
+        
+        model.addAttribute("message", name);
+        model.addAttribute("count", pictureRepository.getPictureCount(accountId));
        
         if (pictureRepository.existsById(id)) {
             model.addAttribute("current", pictureRepository.getOne(id).getId());
         }
         
-        Long nextId = pictureRepository.getNextId(id);
+        Long nextId = pictureRepository.getNextId(id, accountId);
         if (nextId != null){
             FileObject fo = pictureRepository.getOne(nextId);
             model.addAttribute("next", fo.getId()); 
         }
         
-        Long previousId = pictureRepository.getPreviousId(id);
+        Long previousId = pictureRepository.getPreviousId(id, accountId);
         if (previousId != null) {
             FileObject fo = pictureRepository.getOne(previousId);
             model.addAttribute("previous", fo.getId());
@@ -63,6 +77,11 @@ public class albumPageContoller {
     @GetMapping(path = "/album/{id}/content", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] showOnePicture(@PathVariable Long id){
+        Long accountId = accountService.getLoggedId();
+        // Käyttäjälle näytetään oma kuva, vaikka yrittääkin hakea suoraan toisen käyttäjän kuvaa.
+        if (pictureRepository.countByAccountIdAndPictureId(accountId, id) == 0)
+            return pictureRepository.getOne(pictureRepository.getNextId(id, accountId)).getContent();
+        
         return pictureRepository.getOne(id).getContent();
     }
     
@@ -80,8 +99,24 @@ public class albumPageContoller {
     
     @PostMapping("/album/{id}/setProfilePicture")
     public String setProfilePicture(@PathVariable Long id) {
+        // Lähdetään pois, jos yritetään asettaa profiilikuvaksi jonkun toisen kuva.
+        Long accountId = accountService.getLoggedId();
+        if (pictureRepository.countByAccountIdAndPictureId(accountId, id) == 0)
+            return "redirect/album";
+        
         accountService.setProfilePicture(id);
    
+        return "redirect:/album/"+id;
+    }
+    
+    
+    @PostMapping("/album/{id}/deletePicture")
+    public String deletePicture(@PathVariable Long id) {
+        // Lähdetään pois, jos yritetään poistaa jonkun toisen kuva.
+        Long accountId = accountService.getLoggedId();
+        if (pictureRepository.countByAccountIdAndPictureId(accountId, id) == 0)
+            return "redirect/album";
+        pictureRepository.deleteById(id);
         return "redirect:/album/"+id;
     }
 }
