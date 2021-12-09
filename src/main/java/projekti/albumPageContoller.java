@@ -23,6 +23,15 @@ public class albumPageContoller {
     @Autowired
     AccountService accountService;
     
+    @GetMapping("/album/test")
+    public String show(Model model) {
+            String name = accountService.getLoggedNickame();
+            Long accountId = accountService.getLoggedId();
+            model.addAttribute("message", name);
+            model.addAttribute("count", pictureRepository.getPictureCount(accountId));
+            return "albumPage";
+    }
+    
     @GetMapping("/album")
     public String show(Model model) {
         Long firstId = pictureRepository.getNextId(0L, accountService.getLoggedId());

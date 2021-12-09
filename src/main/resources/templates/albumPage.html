@@ -46,12 +46,12 @@
             <a th:href="@{/album/{id}(id=${next})}">Next</a>
         </div>
     
-        <div>
+        <div th:if="${current != null}">
             <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
                 <input type="submit" value="Aseta profiilikuvaksi"/>
             </form>
         </div>
-        <div>
+        <div th:if="${current != null}">
             <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
                 <input type="submit" value="Poista kuva"/>
             </form>

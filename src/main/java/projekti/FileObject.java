@@ -18,7 +18,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @Data
 public class FileObject extends AbstractPersistable<Long> {
-    @Lob
+    
+    //@Lob
     @Type(type = "org.hibernate.type.ImageType")
     private byte[] content;
     
