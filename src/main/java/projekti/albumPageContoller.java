@@ -25,6 +25,7 @@ public class albumPageContoller {
     
     @GetMapping("/album/test")
     public String showTest(Model model) {
+            Long firstId = pictureRepository.getNextId(0L, accountService.getLoggedId());
             String name = accountService.getLoggedNickame();
             Long accountId = accountService.getLoggedId();
             model.addAttribute("message", name);
