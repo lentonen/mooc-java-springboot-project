@@ -45,24 +45,23 @@
         <div th:if="${next != null}">
             <a th:href="@{/album/{id}(id=${next})}">Next</a>
         </div>
-    
-        <div th:if="${current != null}">
-            <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
-                <input type="submit" value="Aseta profiilikuvaksi"/>
+        
+      <div th:if="${current != null}">
+        <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
+          <input type="submit" value="Aseta profiilikuvaksi"/>
             </form>
-        </div>
+          </div>
         <div th:if="${current != null}">
-            <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
-                <input type="submit" value="Poista kuva"/>
-            </form>
+          <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
+            <input type="submit" value="Poista kuva"/>
+          </form>
         </div>
 
         <h2>Add new content</h2>
-
-        <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
+          <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
             <input type="submit" value="Lisää!"/>
-        </form>
+         </form>
 </div>
 
 

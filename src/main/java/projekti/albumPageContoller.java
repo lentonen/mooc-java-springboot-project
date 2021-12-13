@@ -52,14 +52,13 @@ public class albumPageContoller {
         
         // Asetetaan id:tä vastaava kuva albumiin
         if (pictureRepository.existsById(id)) {
-            model.addAttribute("current", pictureRepository.getOne(id).getId());
+            model.addAttribute("current", id);
         }
         
         // Viedään tieto seuraavan kuvan id:stä.
         try {
             Long nextId = pictureRepository.getNext(id, accountId).getId();
-            FileObject fo = pictureRepository.getOne(nextId);
-            model.addAttribute("next", fo.getId()); 
+            model.addAttribute("next", nextId); 
         } catch (Exception e) {
             // Do nothing
         }
@@ -67,8 +66,7 @@ public class albumPageContoller {
         // viedään tieto edellisen kuvan id:stä.
         try {
             Long previousId = pictureRepository.getPrevious(id, accountId).getId();
-            FileObject fo = pictureRepository.getOne(previousId);
-            model.addAttribute("previous", fo.getId());
+            model.addAttribute("previous", previousId);
         } catch (Exception e) {
             // Do nothing
         }
