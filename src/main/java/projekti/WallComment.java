@@ -19,4 +19,5 @@ public class WallComment extends AbstractPersistable<Long> {
     private String content;
     @ManyToOne
     private WallMessage message;
+    private Long likes = 0L;
 }

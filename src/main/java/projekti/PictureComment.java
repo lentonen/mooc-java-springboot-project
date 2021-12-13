@@ -19,4 +19,5 @@ public class PictureComment extends AbstractPersistable<Long> {
     private String content;
     @ManyToOne
     private FileObject picture;
+    private Long likes = 0L;
 }

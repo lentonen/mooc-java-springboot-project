@@ -31,6 +31,9 @@ public class MainPageController {
     @Autowired
     AccountService accountService;
     
+    @Autowired
+    WallMessageRepository wallMessageRepository;
+    
     
 
 
@@ -49,9 +52,14 @@ public class MainPageController {
         // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
         try {
             String name = accountService.getLoggedNickame();
+            Long loggedId = accountService.getLoggedId();
             model.addAttribute("message", name);
-            model.addAttribute("profilePictureId", accountRepository.findByNickname(name).getProfilePictureId());
+            model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());
+            // Ladataan wallMessaget
+            model.addAttribute("wallMessages", wallMessageRepository.findByAccountId(loggedId));
+            
             return "mainPage";
+            
         
         // Jos yrl ei löydy, niin edellinen heittää poikkeuksen. Käsitellään poikkeus siten, että ohjataan käyttäjä takaisin omalle sivulle.
         } catch (NullPointerException e) {
@@ -59,5 +67,18 @@ public class MainPageController {
             String urlException = accountRepository.findByUsername(auth.getName()).getUrlAddress();
             return "redirect:"+urlException;
         }
+        
+        
+    }
+    
+    
+    @PostMapping("/wallMessage")
+    public String create(@RequestParam String message) {
+        WallMessage msg = new WallMessage();
+        msg.setContent(message);
+        msg.setAccount(accountService.getLoggedAccount());
+        wallMessageRepository.save(msg);
+
+        return "redirect:/mainPage";
     }
 }
