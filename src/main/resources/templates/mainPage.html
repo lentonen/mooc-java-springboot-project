@@ -36,7 +36,9 @@
   <div class="row">
     <div class="col-sm-2">
       <div th:if="${profilePictureId != null}">
-         <img style="border-radius: 50%;max-width: 150px;" th:src="@{/album/{id}/content(id=${profilePictureId})}"/>
+
+         <img class="rounded img-fluid" style="width:150px" th:src="@{/album/{id}/content(id=${profilePictureId})}"/>
+
       </div>
       <div th:unless="${profilePictureId != null}" class="fakeimg">Ei vielä profiilikuvaa</div>
       <ul class="nav nav-pills flex-column">
@@ -49,96 +51,64 @@
     <div class="col-sm-10">
         
       <!--- Käyttäjä voi lisätä kommentin seinälle --->
-      
-      <form th:action="@{/wallMessage}" method="POST">
-      <div class="form-group shadow-textarea">
-        <textarea name="message" class="form-control z-depth-1" id="wallMessage" rows="3" placeholder="Mitä mietit?"></textarea>
-        <div style="text-align:right;"><button id="sendWallMessage" style="margin-top: 15px;" class="btn btn-primary btn-sm shadow-none" type="submit">Lisää seinälle</button></div>
+      <div class="ml-50">
+        <form th:action="@{/wallMessage}" method="POST">
+          <div class="form-group shadow-textarea">
+            <textarea name="message" class="form-control z-depth-1" id="wallMessage" rows="3" placeholder="Mitä mietit?"></textarea>
+            <div style="text-align:right;"><button id="sendWallMessage" style="margin-top: 15px;" class="btn btn-primary btn-sm shadow-none" type="submit">Lisää seinälle</button></div>
+          </div>
+        </form>
       </div>
-      </form>
       <!---  --->
       
-      <!--- Yksittäinen seinäkommentti  --->
+      <!--- Yksittäinen seinäpostaus  --->
       
-      <div th:each="wallMessage : ${wallMessages}" class="container mt-5">
+      <div class="container mt-5">
         <div class="d-flex justify-content-center row">
           <div class="col-md-8">
-            <div class="d-flex flex-column comment-section" id="myGroup">
-              <div class="bg-white p-2">
-                <div class="d-flex flex-row user-info"><img class="rounded-circle" th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" width="40">
-                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name"><span th:text="${wallMessage.account.nickname}">Nickname</span></span><span th:text="${wallMessage.messageDate}" class="date text-black-50">Shared publicly - Jan 2020</span></div>
+            <div th:each="wallMessage : ${wallMessages}" class="d-flex flex-column comment-section" id="myGroup">
+              <div class="bg-white p-2 border-bottom px-4">
+                <div class="d-flex flex-row user-info"><img class="rounded-circle" th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" style=" width:60px;height:auto  ;">
+                <form th:action="@{/mainPage/like/wallMessage/{id}(id=${wallMessage.id})}" th:method="POST">    
+                    <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${wallMessage.likes}">15</span></div>
+                </form>
+                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name"><span th:text="${wallMessage.account.nickname}">Nickname</span></span><span th:text="${wallMessage.messageDate}" class="date text-black-50">Shared publicly - Jan 2020</span></div>
                 </div>
                 <div class="mt-2">
                     <p class="comment-text"><span th:text="${wallMessage.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></p>
                 </div>
               </div>
-              <div class="bg-white p-2">
-                <div class="d-flex flex-row fs-12">
-                  <form th:action="@{/mainPage/like/wallMessage/{id}(id=${wallMessage.id})}" th:method="POST">
-                      <div class="like p-2 cursor"><span th:text="${wallMessage.likes}">15</span><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button></div>
+              <div class="p-2"> 
+              <div class="d-flex flex-row add-comment-section">
+                <img class="img-fluid img-responsive rounded-circle mr-2" th:src="@{/album/{id}/content(id=${loggedUserPicId})}" width="38">
+                  <form th:action="@{/messageComment/{id}(id=${wallMessage.id})}" method="POST">
+                    <input name="comment" type="text" class="form-control mr-3" placeholder="Add comment">
+                    <button class="btn btn-primary" type="submit">Kommentoi</button>
                   </form>
-                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>
-                </div>
+              </div>
+                  
+                      
+              </div>
+                <!--- kommentit --->
+                      <div th:each="comment : ${comments}">
+                        <div th:if="${comment.entityId == wallMessage.id}" class="commented-section mt-3 ml-2">
+                          <div class="d-flex flex-row align-items-center commented-user">
+                            <img class=" rounded-circle mr-2" th:src="@{/album/{id}/content(id=${loggedUserPicId})}" width="25"><h5 class="mr-2"><span th:text="${comment.account.nickname}">Nickname</span></h5><span class="dot mb-1"></span><span th:text="${comment.messageDate}" class="mb-1 ml-2">4 hours ago</span>
+                          </div>
+                          <div class="comment-text-sm"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                          <div class="reply-section">
+                            <form th:action="@{/mainPage/like/wallMessage/{id}(id=${wallMessage.id})}" th:method="POST">
+                              <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span class="ml-2">10</span><span class="dot ml-2"></span>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--- Seinäkommentti loppuu tähän --->
-      
-    <div th:each="wallMessage : ${wallMessages}" class="container mt-5 mb-5">
-    <div class="d-flex justify-content-center row">
-        <div class="d-flex flex-column col-md-8">
-            <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">    
-                <div class="profile-image"><img class="rounded-circle" th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" width="70"></div>
-                <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"><i class="fa fa-sort-up fa-2x hit-voting"></i><span>127</span><i class="fa fa-sort-down fa-2x hit-voting"></i></div>
-                <div class="d-flex flex-column ml-3">
-                    <div class="d-flex flex-row post-title">
-                        <h5>Is sketch 3.9.1 stable?</h5><span class="ml-2">(Jesshead)</span>
-                    </div>
-                    <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="bdge mr-1">video</span><span class="mr-2 comments">13 comments&nbsp;</span><span class="mr-2 dot"></span><span>6 hours ago</span></div>
-                </div>
-            </div>
-            <div class="coment-bottom bg-white p-2 px-4">
-                <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>
-                <div class="commented-section mt-2">
-                    <div class="d-flex flex-row align-items-center commented-user">
-                        <h5 class="mr-2">Corey oates</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">4 hours ago</span>
-                    </div>
-                    <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-                    <div class="reply-section">
-                        <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span class="dot ml-2"></span>
-                            <h6 class="ml-2 mt-1">Reply</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="commented-section mt-2">
-                    <div class="d-flex flex-row align-items-center commented-user">
-                        <h5 class="mr-2">Samoya Johns</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">5 hours ago</span>
-                    </div>
-                    <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</span></div>
-                    <div class="reply-section">
-                        <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">15</span><span class="dot ml-2"></span>
-                            <h6 class="ml-2 mt-1">Reply</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="commented-section mt-2">
-                    <div class="d-flex flex-row align-items-center commented-user">
-                        <h5 class="mr-2">Makhaya andrew</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">10 hours ago</span>
-                    </div>
-                    <div class="comment-text-sm"><span>Nunc sed id semper risus in hendrerit gravida rutrum. Non odio euismod lacinia at quis risus sed. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Enim facilisis gravida neque convallis a. In mollis nunc sed id. Adipiscing elit pellentesque habitant morbi tristique senectus et netus. Ultrices mi tempus imperdiet nulla malesuada pellentesque.</span></div>
-                    <div class="reply-section">
-                        <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">25</span><span class="dot ml-2"></span>
-                            <h6 class="ml-2 mt-1">Reply</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    
+      <!--- Seinäpostaus loppuu tähän --->
     </div>
   </div> 
 </div>

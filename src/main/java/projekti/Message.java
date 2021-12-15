@@ -16,7 +16,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WallMessage extends AbstractPersistable<Long> {
+public class Message extends AbstractPersistable<Long> {
     private String content;
     @ManyToOne
     private Account account;

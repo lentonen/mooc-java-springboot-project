@@ -32,7 +32,10 @@ public class MainPageController {
     AccountService accountService;
     
     @Autowired
-    WallMessageRepository wallMessageRepository;
+    MessageRepository messageRepository;
+    
+    @Autowired
+    MessageService messageService;
     
     
 
@@ -56,7 +59,12 @@ public class MainPageController {
             model.addAttribute("message", name);
             model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());
             // Ladataan wallMessaget
-            model.addAttribute("wallMessages", wallMessageRepository.findByAccountId(loggedId));
+            model.addAttribute("wallMessages", messageRepository.findByAccountIdAndEntityId(loggedId, null));
+            List<Message> msg = messageService.findAllCommentsByUser(loggedId);
+            model.addAttribute("comments", messageService.findAllCommentsByUser(loggedId));
+            
+            // Viedään sisään kirjautuneen käyttäjän profiilikuvan ID
+            model.addAttribute("loggedUserPicId", accountService.getLoggedAccount().getProfilePictureId()); 
             
             return "mainPage";
             
@@ -73,12 +81,14 @@ public class MainPageController {
     
     
     @PostMapping("/wallMessage")
-    public String create(@RequestParam String message) {
-        WallMessage msg = new WallMessage();
-        msg.setContent(message);
-        msg.setAccount(accountService.getLoggedAccount());
-        wallMessageRepository.save(msg);
-
+    public String createWallMessage(@RequestParam String message) {
+        messageService.createWallMessage(message, accountService.getLoggedAccount());
+        return "redirect:/mainPage";
+    }
+    
+    @PostMapping("/messageComment/{id}")
+    public String createComment(@RequestParam String comment, @PathVariable Long id) {
+        messageService.createWallMessageComment(comment, accountService.getLoggedAccount(), id);
         return "redirect:/mainPage";
     }
 }
