@@ -54,22 +54,35 @@ public class MainPageController {
         
         // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
         try {
-            String name = accountService.getLoggedNickame();
-            Long loggedId = accountService.getLoggedId();
+            String name = accountService.getNickname(url);
+            Long userId = accountService.getId(url);
+            Long loggedUserId = accountService.getLoggedId();
             model.addAttribute("message", name);
             model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());  
+            model.addAttribute("ownPageBoolean", accountService.ownPage(url));
+            model.addAttribute("user", accountRepository.findByUrlAddress(url));
             
-            // Haetaan käyttäjän seuraamat tilit ja lisätään oma tili listaan seinäkommenttien hakemista varten
-            List<Long> follow = accountService.isFollowingId(loggedId);
-            follow.add(loggedId);
+            boolean follows = accountService.follows(accountService.getLoggedId(), accountRepository.findByUrlAddress(url).getId());
+            model.addAttribute("followBoolean", follows);
+            
+            // Haetaan käyttäjän seuraamat tilit ja lisätään oma tili listaan seinäkommenttien hakemista varten. 
+            List<Long> follow = accountService.isFollowingId(userId);
+            follow.add(userId);
+            
+            // Tarkastellaan ketä kirjautunut käyttäjä seuraa. Viedään tieto kommentointia varten
+            List<Long> loggedUserFollows = accountService.isFollowingId(accountService.getLoggedId());
+            loggedUserFollows.add(loggedUserId);
+            model.addAttribute("followList", loggedUserFollows);
             
             // Ladataan wallMessaget
             model.addAttribute("wallMessages", messageRepository.findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc(follow, null));
-            List<Message> msg = messageService.findAllCommentsByUser(loggedId);
-            model.addAttribute("comments", messageService.findAllCommentsByUser(loggedId));
+            List<Message> msg = messageService.findAllCommentsByUser(userId);
+            model.addAttribute("comments", messageService.findAllCommentsByUser(userId));
             
             // Viedään sisään kirjautuneen käyttäjän profiilikuvan ID
-            model.addAttribute("loggedUserPicId", accountService.getLoggedAccount().getProfilePictureId()); 
+            model.addAttribute("loggedUserPicId", accountService.getLoggedAccount().getProfilePictureId());
+            
+   
             
             return "mainPage";
             

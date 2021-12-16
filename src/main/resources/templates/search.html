@@ -37,7 +37,7 @@
     <div class="col-sm-8">
         <ul name="foundUsers">
             <li th:each="account : ${accounts}">
-                 <a name="linkToUser" th:href="@{'/user/' + ${account.urlAddress}}"><span display="inline-block"  th:text="${account.nickname}">Nickname</span></a>
+                 <a name="linkToUser" th:href="@{'/mainPage/' + ${account.urlAddress}}"><span display="inline-block"  th:text="${account.nickname}">Nickname</span></a>
                 
 
             </li>

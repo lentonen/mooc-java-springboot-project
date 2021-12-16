@@ -43,14 +43,14 @@ public class OtherUsersPageController {
     @PostMapping("/user/{url}/follow")
     public String follow(Model model, @PathVariable String url) {
          accountService.startFollowUrl(url);
-         return "redirect:/user/"+url;
+         return "redirect:/mainPage/"+url;
     }
     
     
     @PostMapping("/user/{url}/unfollow")
     public String unfollow(Model model, @PathVariable String url) {
          accountService.stopFollowUrl(url);
-         return "redirect:/user/"+url;
+         return "redirect:/mainPage/"+url;
     }
  
 }

@@ -33,6 +33,7 @@ public class PictureService {
         return fo.get().getOwner().getId();
     }
     
+    
     /**
      * Palauttaa tiedon siitä, saako käyttäjä nähdä toisen käyttäjän kuvan
      * @param loggedId

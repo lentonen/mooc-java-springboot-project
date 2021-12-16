@@ -270,4 +270,36 @@ public class AccountService {
         accountRepository.findByUsername(username).setProfilePictureId(pictureId);
         accountRepository.flush();
     }
+    
+    
+    /**
+     * Palauttaa url vastaavan nicknamen
+     * @param url sivu jonka omistajaa etsitään
+     * @return sivun omistajan nickname
+     */
+    public String getNickname(String url) {
+        return accountRepository.findByUrlAddress(url).getNickname();
+    }
+    
+    
+    /**
+     * Palauttaa sivun omistajan ID:n
+     * @param url sivu jonka omistajaa etsitään
+     * @return sivun omistajan ID
+     */
+    public Long getId(String url) {
+        return accountRepository.findByUrlAddress(url).getId();
+    }
+    
+    
+    /**
+     * Kertoo onko käyttäjä omalla sivulla
+     * @param url sivu jolla ollaan
+     * @return palauttaa true jos sivu on oma, false jos jonkun muun sivu
+     */
+    public Boolean ownPage(String url) {
+        if (getLoggedAccount().getUrlAddress().equals(url))
+            return true;
+        return false;
+    }
 }
