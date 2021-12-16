@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class albumPageContoller {
+public class AlbumPageContoller {
 
     @Autowired
     private PictureRepository pictureRepository;
@@ -83,15 +83,16 @@ public class albumPageContoller {
     @GetMapping(path = "/album/{id}/content", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] showOnePicture(@PathVariable Long id){
-        Long accountId = accountService.getLoggedId();
-        // Käyttäjälle näytetään oma kuva, vaikka yrittääkin hakea suoraan toisen käyttäjän kuvaa. Jos omaa ei ole, näytetään tyhjä kuva.
-        if (!pictureRepository.existsByOwnerIdAndId(accountId, id))
+        //Long accountId = accountService.getLoggedId();
+        // Käyttäjälle näytetään oma kuva, vaikka yrittääkin hakea suoraan toisen käyttäjän kuvaa. Jos omaa ei ole, näytetään tyhjä kuva. HUOM! TÄmä poistettu käytöstä.
+        // Tällä hetkellä kaikki kuvat tulevat näkyviin kaikille
+        /*if (!pictureRepository.existsByOwnerIdAndId(accountId, id))
             try {
                 return pictureRepository.getOne(pictureRepository.getNext(id, accountId).getId()).getContent();
             } catch (NullPointerException e) {
                 byte[] emptyData = {};
                 return emptyData;
-            }
+            }*/
         return pictureRepository.getOne(id).getContent();
     }
     

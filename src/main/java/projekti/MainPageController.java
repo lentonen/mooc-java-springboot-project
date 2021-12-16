@@ -57,9 +57,14 @@ public class MainPageController {
             String name = accountService.getLoggedNickame();
             Long loggedId = accountService.getLoggedId();
             model.addAttribute("message", name);
-            model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());
+            model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());  
+            
+            // Haetaan käyttäjän seuraamat tilit ja lisätään oma tili listaan seinäkommenttien hakemista varten
+            List<Long> follow = accountService.isFollowingId(loggedId);
+            follow.add(loggedId);
+            
             // Ladataan wallMessaget
-            model.addAttribute("wallMessages", messageRepository.findByAccountIdAndEntityId(loggedId, null));
+            model.addAttribute("wallMessages", messageRepository.findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc(follow, null));
             List<Message> msg = messageService.findAllCommentsByUser(loggedId);
             model.addAttribute("comments", messageService.findAllCommentsByUser(loggedId));
             

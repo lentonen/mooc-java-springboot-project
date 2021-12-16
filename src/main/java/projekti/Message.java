@@ -1,6 +1,7 @@
 package projekti;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class Message extends AbstractPersistable<Long> {
     private Account account;
     private Long likes = 0L;
     LocalDate messageDate = java.time.LocalDate.now();
+    LocalTime messageTime = java.time.LocalTime.now();
     
     // kertoo mihin kuvaan tai kommenttiin message liittyy. Tämä on null, jos kyseessä käyttäjän oma seinäviesti.
     // Jos kyseessä on kommetti kuvaan tai seinäviestiin, entityId osoittaa kyseisen entiteetin ID:n tietokannassa.

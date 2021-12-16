@@ -143,6 +143,19 @@ public class AccountService {
      return findFollowed(follow);
     }
     
+    /**
+     * Palauttaa listassa käyttäjän seuraamien tilien ID:t
+     * @param userId Kenen käyttäjän seuraajia etsitään
+     * @return Lista seurattujen henkilöiden ID
+     */
+    public List<Long> isFollowingId(Long userId) {
+        List<Account> follow = isFollowing(userId);
+        List<Long> followId = new ArrayList<Long>();
+        for (Account a : follow) {
+            followId.add(a.getId());
+        }
+        return followId;
+    }
     
     /**
      * Palauttaa listan seuraajista
@@ -153,6 +166,9 @@ public class AccountService {
         ArrayList<Followers> followers = followersRepository.findByToId(userId);
         return findFollowers(followers);
     }
+    
+    
+    
     
     
     /**
