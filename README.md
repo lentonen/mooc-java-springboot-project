@@ -11,3 +11,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 - Bootstrap
 
 # Heroku
+Tänne tulee linkki Herokuun, jossa sovellus pyörii.
+
+# Tulevat päivitykset
+- [ ] Ulkoasun viimeistelyä // Kesken
