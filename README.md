@@ -10,7 +10,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 - Thymeleaf
 - Bootstrap
 
-## Ohjeet käynnistykseen
+## Ohjeet käynnistykseen ja sammuttamiseen
 1. Lataa ja asenna Maven
 2. Avaa komentorivi ja navigoi projektin juureen (kansio jossa pom.xml sijaitsee)
 3. Suorita komento  `mvn spring-boot:run`
