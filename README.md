@@ -12,7 +12,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 - HTML
 - CSS
 
-## Ohjeet käynnistykseen ja sammuttamiseen
+## Ohjeet käynnistykseen ja sammuttamiseen komentoriviltä
 1. Lataa ja asenna Maven
 2. Avaa komentorivi ja navigoi projektin juureen (kansio jossa pom.xml sijaitsee)
 3. Suorita komento  `mvn spring-boot:run`
@@ -22,7 +22,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 
 
 ## Heroku
-Tänne tulee linkki Herokuun, jossa sovellus pyörii.
+Tänne tulee Heroku-linkki, jossa sovellus pyörii.
 
 ## Tulevat päivitykset
 - [ ] Parempi käyttäjän "rekisteröinti" -sivu
