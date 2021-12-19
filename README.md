@@ -4,11 +4,13 @@
 
 Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekti
 
-## Projektissa käytetty mm.
+## Projektissa käytetty
 - Java
 - Spring Boot
 - Thymeleaf
 - Bootstrap
+- HTML
+- CSS
 
 ## Ohjeet käynnistykseen ja sammuttamiseen
 1. Lataa ja asenna Maven
