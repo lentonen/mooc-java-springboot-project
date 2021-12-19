@@ -24,6 +24,6 @@ Tänne tulee linkki Herokuun, jossa sovellus pyörii.
 
 ## Tulevat päivitykset
 - [ ] Parempi käyttäjän "rekisteröinti" -sivu
-- [ ] Ulkoasun viimeistelyä
 - [ ] Kuvien kommentointi
 - [ ] Tykkäykset
+- [ ] Parannuksia ulkoasuun
