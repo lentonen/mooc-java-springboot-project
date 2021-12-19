@@ -13,7 +13,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 - CSS
 
 ## Ohjeet käynnistykseen ja sammuttamiseen komentoriviltä
-1. Lataa ja asenna Maven
+1. Lataa ja asenna [Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/)
 2. Avaa komentorivi ja navigoi projektin juureen (kansio jossa pom.xml sijaitsee)
 3. Suorita komento  `mvn spring-boot:run`
 4. Nyt sovellus on käytettävissä osoitteessa http://localhost:8080/
