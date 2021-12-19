@@ -4,4 +4,10 @@
 
 Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekti
 
-# Built With
+# Projektissa käytetty
+- Java
+- Spring Boot
+- Thymeleaf
+- Bootstrap
+
+# Heroku
