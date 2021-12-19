@@ -4,7 +4,7 @@
 
 Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekti
 
-## Projektissa käytetty
+## Projektissa käytetty mm.
 - Java
 - Spring Boot
 - Thymeleaf
