@@ -14,4 +14,6 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 Tänne tulee linkki Herokuun, jossa sovellus pyörii.
 
 # Tulevat päivitykset
-- [x] Ulkoasun viimeistelyä // Kesken
+- [ ] Ulkoasun viimeistelyä
+- [ ] Kuvien kommentointi
+- [ ] Tykkäykset
