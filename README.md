@@ -12,12 +12,18 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 
 ## Ohjeet käynnistykseen
 1. Lataa ja asenna Maven
-2. Avaa komentorivi ja 
+2. Avaa komentorivi ja navigoi projektin juureen (kansio jossa pom.xml sijaitsee)
+3. Suorita komento  mvn spring-boot:run
+4. Nyt sovellus on käytettävissä osoitteessa http://localhost:8080/
+5. Pääset kirjautumaan sovellukseen tunnuksilla "aku" (passwordaku)
+6. Sovellus sammuu komentorivillä painamalla ctrl + c
+
 
 ## Heroku
 Tänne tulee linkki Herokuun, jossa sovellus pyörii.
 
 ## Tulevat päivitykset
+- [ ] Parempi käyttäjän "rekisteröinti" -sivu
 - [ ] Ulkoasun viimeistelyä
 - [ ] Kuvien kommentointi
 - [ ] Tykkäykset
