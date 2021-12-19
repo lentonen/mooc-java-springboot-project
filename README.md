@@ -10,6 +10,10 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 - Thymeleaf
 - Bootstrap
 
+## Ohjeet käynnistykseen
+1. Lataa ja asenna Maven
+2. Avaa komentorivi ja 
+
 ## Heroku
 Tänne tulee linkki Herokuun, jossa sovellus pyörii.
 
