@@ -137,9 +137,11 @@
                           </div>
                           <div class="comment-text-sm"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
                           <div class="reply-section">
-                            <form th:action="@{/mainPage/like/wallMessage/{id}(id=${wallMessage.id})}" th:method="POST">
-                              <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${comment.likes}" class="ml-2">10</span><span class="dot ml-2"></span>
-                            </form>
+                            <div th:with="loggedUserId=${loggedUserId},URI=${#httpServletRequest.requestURI}">
+                              <form th:action="@{{URI}/like/{loggedUserId}/wallMessage/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
+                                <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${#lists.size(comment.likes)}" class="ml-2">10</span><span class="dot ml-2"></span>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
