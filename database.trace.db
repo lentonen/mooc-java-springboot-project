@@ -4909,3 +4909,93 @@ SELECT COUNT(id) FROM FROM file_object fo WHERE fo.owner_id = ? [42001-200]
 2021-12-09 13:20:46 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNT(ID) FROM FROM[*] FILE_OBJECT FO WHERE FO.OWNER_ID = ?"; expected "identifier"; SQL statement:
 SELECT COUNT(id) FROM FROM file_object fo WHERE fo.owner_id = ? [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:36:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:36:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:37:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:37:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, MESSAGE_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, message_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE ACCOUNT_LIKES ADD CONSTRAINT FKT72ODVGJIQDL82EU3MQXR3NKN FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table account_likes add constraint FKt72odvgjiqdl82eu3mqxr3nkn foreign key (likes_id) references like [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FK70PTJAFC05VGD5FPADAQ5P1JS FOREIGN KEY (MESSAGE_ID) REFERENCES MESSAGE"; expected "identifier"; SQL statement:
+alter table like add constraint FK70ptjafc05vgd5fpadaq5p1js foreign key (message_id) references message [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:48:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, ENTITY_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, entity_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:50:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, ENTITY_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, entity_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:52:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:52:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:54:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:54:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]

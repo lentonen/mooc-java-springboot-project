@@ -2,8 +2,10 @@ package projekti;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,10 @@ public class Message extends AbstractPersistable<Long> {
     private String content;
     @ManyToOne
     private Account account;
-    private Long likes = 0L;
+
+    @OneToMany(mappedBy = "message")
+    private List<MessageLike> likes;
+    
     LocalDate messageDate = java.time.LocalDate.now();
     LocalTime messageTime = java.time.LocalTime.now();
     

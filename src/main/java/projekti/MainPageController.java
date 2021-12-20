@@ -7,6 +7,7 @@ package projekti;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +37,9 @@ public class MainPageController {
     
     @Autowired
     MessageService messageService;
+    
+    @Autowired
+    MessageLikeRepository messageLikeRepository;
     
     
 
@@ -82,6 +86,8 @@ public class MainPageController {
             // Viedään sisään kirjautuneen käyttäjän profiilikuvan ID
             model.addAttribute("loggedUserPicId", accountService.getLoggedAccount().getProfilePictureId());
             
+            // Viedään sisään kirjautuneen käyttäjän ID
+            model.addAttribute("loggedUserId", loggedUserId);
    
             
             return "mainPage";
@@ -108,5 +114,14 @@ public class MainPageController {
     public String createComment(@RequestParam String comment, @PathVariable Long id) {
         messageService.createWallMessageComment(comment, accountService.getLoggedAccount(), id);
         return "redirect:/mainPage";
+    }
+    
+    
+    @PostMapping("/mainPage/{url}/like/{userId}/wallMessage/{id}")
+    public String like (@PathVariable String url, @PathVariable Long userId, @PathVariable Long id, HttpServletRequest httpServletRequest) {
+        if (messageLikeRepository.existsByAccountIdAndMessageId(userId, id))
+            return "redirect:/mainPage/"+url;
+        messageLikeRepository.save(new MessageLike(accountService.getLoggedAccount(), messageRepository.getById(id)));
+        return "redirect:/mainPage/"+url;
     }
 }
