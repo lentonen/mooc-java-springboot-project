@@ -42,12 +42,12 @@ public class MessageService {
     }
     
     /**
-     * Palauttaa entityId:tä vastaavat viestit
+     * Palauttaa entityId:tä vastaavat viestit. Palautetaan maksimissaan 10 kommenttia. Tämä rajoite oli annettu harkkatyön ohjeessa.
      * @param entityId lista jota vastaavia viestejä etsitään
      * @return viestit joiden entityId löytyy parametrina viedystä listasta
      */
     public List<Message> findAllComments(List<Long> entityId) {
-        return messageRepository.findByEntityIdInOrderByMessageDateDescMessageTimeDesc(entityId);
+        return messageRepository.findTop10ByEntityIdInOrderByMessageDateDescMessageTimeDesc(entityId);
     }
     
     

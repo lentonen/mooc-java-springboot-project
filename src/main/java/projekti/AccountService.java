@@ -316,7 +316,6 @@ public class AccountService {
             } catch (NullPointerException e) {
                 // Älä tee mitään. Heittää poikkeuksen, jos follow-listassa ei ole oman ID:n lisäksi mitään muuta
             }
-            
         }
     }
 }
