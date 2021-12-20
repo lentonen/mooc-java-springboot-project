@@ -41,6 +41,7 @@ public class MessageService {
         return commentIds;
     }
     
+    
     /**
      * Palauttaa entityId:tä vastaavat viestit. Palautetaan maksimissaan 10 kommenttia. Tämä rajoite oli annettu harkkatyön ohjeessa.
      * @param entityId lista jota vastaavia viestejä etsitään
@@ -75,6 +76,12 @@ public class MessageService {
     }
     
     
+    /**
+     * Luodaan kommentti seinäviestille
+     * @param content kommentin sisältö
+     * @param account kommentin tekijän tili
+     * @param messageId mihin viestiin kommentti liittyy
+     */
     public void createWallMessageComment(String content, Account account, Long messageId) {
         Message msg = new Message();
         msg.setContent(content);
