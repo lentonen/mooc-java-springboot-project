@@ -41,8 +41,6 @@ public class MainPageController {
     @Autowired
     MessageLikeRepository messageLikeRepository;
     
-    
-
 
     @GetMapping("/mainPage")
     public String list(Model model) {
@@ -61,17 +59,28 @@ public class MainPageController {
             String name = accountService.getNickname(url);
             Long userId = accountService.getId(url);
             Long loggedUserId = accountService.getLoggedId();
-            model.addAttribute("message", name);
+            
+            // Viedään tieto, minkä nimisen käyttäjän sivulla ollaan
+            model.addAttribute("nickname", name);
+            
+            // Sivun omistajan profiilikuvan ID.
             model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());  
+            
+            // Tieto onko kyseessä oma sivu
             model.addAttribute("ownPageBoolean", accountService.ownPage(url));
+            
+            // Tieto kenen käyttäjän sivulla ollaan
             model.addAttribute("user", accountRepository.findByUrlAddress(url));
             
+            // Viedään tieto seuraako käyttäjä sivun omistajaa
             boolean follows = accountService.follows(accountService.getLoggedId(), accountRepository.findByUrlAddress(url).getId());
             model.addAttribute("followBoolean", follows);
             
             // Haetaan käyttäjän seuraamat tilit ja lisätään oma tili listaan seinäkommenttien hakemista varten. 
             List<Long> follow = accountService.isFollowingId(userId);
             follow.add(userId);
+            // Poistetaan seurattujen listasta ne ID:t, jotka ovat estäneet seuraamisen
+            accountService.deleteUsersWhoPrevented(userId, follow);
             
             // Tarkastellaan ketä kirjautunut käyttäjä seuraa. Viedään tieto kommentointia varten
             List<Long> loggedUserFollows = accountService.isFollowingId(accountService.getLoggedId());
@@ -89,7 +98,6 @@ public class MainPageController {
             // Viedään sisään kirjautuneen käyttäjän ID
             model.addAttribute("loggedUserId", loggedUserId);
    
-            
             return "mainPage";
             
         
@@ -109,6 +117,7 @@ public class MainPageController {
         messageService.createWallMessage(message, accountService.getLoggedAccount());
         return "redirect:/mainPage";
     }
+    
     
     @PostMapping("/messageComment/{id}")
     public String createComment(@RequestParam String comment, @PathVariable Long id) {

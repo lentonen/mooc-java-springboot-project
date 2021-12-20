@@ -302,4 +302,21 @@ public class AccountService {
             return true;
         return false;
     }
+    
+    /**
+     * Poistetaan seurattujen henkilöiden listasta ne, jotka ovat estäneet seuraamisen
+     * @param userId
+     * @param follow 
+     */
+    public void deleteUsersWhoPrevented(Long userId, List<Long> follow) {
+        for (Long followId : follow) {
+            try {
+                if (followersRepository.findByFromIdAndToId(userId, followId).getPrevent())
+                follow.remove(followId);
+            } catch (NullPointerException e) {
+                // Älä tee mitään. Heittää poikkeuksen, jos follow-listassa ei ole oman ID:n lisäksi mitään muuta
+            }
+            
+        }
+    }
 }

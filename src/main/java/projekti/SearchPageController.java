@@ -26,6 +26,8 @@ public class SearchPageController {
     @Autowired
     AccountService accountService;
     
+
+    
     @PostMapping("/mainPage/search")
     public String search(Model model, @RequestParam String name) {
         model.addAttribute("accounts", accountService.findAccounts(name));
