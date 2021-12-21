@@ -318,4 +318,14 @@ public class AccountService {
             }
         }
     }
+    
+    
+    /**
+     * Palauttaa url vastaavan ID:n
+     * @param url nimi jota vastaava ID palautetaan
+     * @return nicknamea vastaava ID
+     */
+    public Long getIdByUsingUrl(String url) {
+        return accountRepository.findByUrlAddress(url).getId();
+    }
 }

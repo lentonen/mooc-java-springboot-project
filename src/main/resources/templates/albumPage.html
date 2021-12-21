@@ -30,47 +30,60 @@
         <h2><span th:text="${nickname}"></span> - Kuvat (<span th:text="${count}">count</span>)</h2>
     </div>
   </div>
-    <div class="row">
-        <div class="col-7" th:if="${current != null}">
+    <div class="row" th:if="${current != null}">
+        <div class="col-7">
             <img th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
         </div>
       <div class="col-5 ">
           <div class="jumbotron">
-                <p class="lead"><span th:text="${description}">reg</span></p>
+                <p class="lead"><span th:text="${description}">Kuvateksti</span></p>
             </div>
+              
      
           </div>
       </div>      
   </div>
      
-
+    <div th:with="URI=${#httpServletRequest.requestURI}">
         <div th:if="${previous != null}">
-            <a th:href="@{/album/{id}(id=${previous})}">Previous</a>
+            <a th:href="@{${previous}}">Previous</a>
         </div>
 
         <div th:if="${next != null}">
-            <a th:href="@{/album/{id}(id=${next})}">Next</a>
+            <a th:href="@{${next}}">Next</a>
         </div>
-        
+
+
+    <div th:if="${ownAlbum}">  
       <div th:if="${current != null}">
-        <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
+        <form method="POST" th:action="@{{URI}/setProfilePicture(URI=${URI})}">
           <input type="submit" value="Aseta profiilikuvaksi"/>
+        </form>
+        <form method="POST" th:action="@{{URI}/deletePicture(URI=${URI})}">
+          <input type="submit" value="Poista kuva"/>
+        </form>
+        <div th:if="${count < 10}">
+            <h2>Lisää uusi kuva</h2> 
+            <form method="POST" th:action="@{{URI}/save(URI=${URI})}" enctype="multipart/form-data">
+              <input type="file" name="file" id="file"/>
+              <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
+              <input type="submit" value="Lisää!"/>
             </form>
-          </div>
-        <div th:if="${current != null}">
-          <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
-            <input type="submit" value="Poista kuva"/>
-          </form>
         </div>
-
-        <h2>Lisää uusi kuva</h2>
-          <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
-            <input type="file" name="file" id="file"/>
-            <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
-            <input type="submit" value="Lisää!"/>
-         </form>
+        <div th:unless="${count < 10}">
+          <p>Kuvapankki täynnä! Poista vanhoja kuvia, jos haluat lisätä uusia.</p>
+        </div>
+      </div>
+      <div th:unless="${current != null}">
+        <h2>Lisää uusi kuva</h2> 
+        <form method="POST" th:action="@{/mainPage/{url}/album/{id}/save(id=0,url=${url})}" enctype="multipart/form-data">
+          <input type="file" name="file" id="file"/>
+          <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
+          <input type="submit" value="Lisää!"/>
+        </form>
+      </div>
+    </div>
 </div>
-
 
 
        

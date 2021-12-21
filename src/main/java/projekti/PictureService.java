@@ -44,6 +44,16 @@ public class PictureService {
         Long pictureOwner = getPictureOwner(pictureId);
         return accountService.follows(loggedId, pictureOwner);
     }
+    
+    
+    /**
+     * Kertoo paljonko käyttäjällä on kuvia
+     * @param accountId käyttäjän id
+     * @return kuvien lukumäärän
+     */
+    public Long pictureCount(Long accountId) {
+        return pictureRepository.countByOwnerId(accountId);
+    }
    
     
 }

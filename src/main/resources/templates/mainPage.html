@@ -71,8 +71,9 @@
       <div th:unless="${profilePictureId != null}" class="fakeimg">Ei vielä profiilikuvaa</div>
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <p></p>
-          <a class="nav-link active" href="#">Kuva-albumi</a>
+            <div th:with="URI=${#httpServletRequest.requestURI}">
+          <a class="nav-link active" th:href="@{{URI}/album(URI=${URI})}">Kuva-albumi</a>
+          </div>
         </li> 
       </ul>
     </div>
