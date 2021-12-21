@@ -114,12 +114,13 @@
                 </div>
               </div>
               
-              <div class="d-flex flex-row add-comment-section mt-4 mb-4" th:with="followList=${followList}, user=${wallMessage.account.id}">
+                 <!--- Kommentin lisääminen--->
+              <div class="d-flex flex-row add-comment-section mt-4 mb-4" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
                   <!--- Käyttäjä voi lisätä kommentin seinäviestiin
               <div class="rounded-circle overflow-hidden custom-circle-image-comment">
                 <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
               </div>--->
-                    <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{/messageComment/{id}(id=${wallMessage.id})}" method="POST">
+                    <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
                       <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
                       <button class="btn btn-primary" type="submit">Kommentoi</button>
                     </form>
@@ -131,7 +132,7 @@
                         <div th:if="${comment.entityId == wallMessage.id}" class="commented-section mt-3 ml-2">
                           <div class="d-flex flex-row align-items-center commented-user">
                             <div class="rounded-circle overflow-hidden custom-circle-image-comment mr-2">
-                               <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style=" width:100px"> 
+                               <img th:src="@{/album/{id}/content(id=${comment.account.profilePictureId})}" style=" width:100px"> 
                             </div>
                             <h5 class="mr-2"><span th:text="${comment.account.nickname}">Nickname</span></h5><span class="dot mb-1"></span><span th:text="${comment.messageDate}" class="mb-1 ml-2 text-black-50">pvm</span><span th:text="${comment.messageTime}" class=" mb-1 ml-2 date text-black-50">13:45</span>
                           </div>

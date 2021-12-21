@@ -41,7 +41,7 @@ public class AlbumPageContoller {
     public String showPicture(Model model, @PathVariable Long id) {
         String name = accountService.getLoggedNickame();
         Long accountId = accountService.getLoggedId();
-        model.addAttribute("message", name);
+        model.addAttribute("nickname", name);
         model.addAttribute("count", pictureRepository.countByOwnerId(accountId));
         
         // Käyttäjä ei näe muiden käyttäjien omaa albumia
@@ -53,6 +53,8 @@ public class AlbumPageContoller {
         // Asetetaan id:tä vastaava kuva albumiin
         if (pictureRepository.existsById(id)) {
             model.addAttribute("current", id);
+            String description = pictureRepository.getOne(id).getDescription();
+            model.addAttribute("description", pictureRepository.getOne(id).getDescription());
         }
         
         // Viedään tieto seuraavan kuvan id:stä.
@@ -97,12 +99,13 @@ public class AlbumPageContoller {
     }
     
     @PostMapping("/album")
-    public String save(@RequestParam("file") MultipartFile file) throws IOException {
+    public String save(@RequestParam("file") MultipartFile file, @RequestParam("description") String description) throws IOException {
         if (file.isEmpty() || !file.getContentType().equals(MediaType.IMAGE_JPEG_VALUE))
             return "redirect:/album";  
         FileObject fo = new FileObject();
         fo.setContent(file.getBytes());
         fo.setOwner(accountService.getLoggedAccount());
+        fo.setDescription(description);
         pictureRepository.save(fo);
         return "redirect:/album";
     }

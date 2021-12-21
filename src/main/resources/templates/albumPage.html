@@ -16,11 +16,7 @@
         </style>
     </head>
     
-    <body>
-        
-        <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1 id ="header" th:text="${'LeisBook / ' + message}">LeisBook / nickname </h1>
-</div>
+   
 
 <nav th:replace="fragments/navigation-logged :: nav">
     <p>navigation with links and searchbar</p>
@@ -30,13 +26,23 @@
         
 <div class="container" style="margin-top:30px">
   <div class="row">
-    <div class="col-sm-16">
-      <h2>Kuvat (<span th:text="${count}">count</span>)</h2>
-    </div>      
+    <div class="col-sm-6">
+        <h2><span th:text="${nickname}"></span> - Kuvat (<span th:text="${count}">count</span>)</h2>
+    </div>
   </div>
-     <div th:if="${current != null}">
+    <div class="row">
+        <div class="col-7" th:if="${current != null}">
             <img th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
         </div>
+      <div class="col-5 ">
+          <div class="jumbotron">
+                <p class="lead"><span th:text="${description}">reg</span></p>
+            </div>
+     
+          </div>
+      </div>      
+  </div>
+     
 
         <div th:if="${previous != null}">
             <a th:href="@{/album/{id}(id=${previous})}">Previous</a>
@@ -57,9 +63,10 @@
           </form>
         </div>
 
-        <h2>Add new content</h2>
+        <h2>Lisää uusi kuva</h2>
           <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
+            <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
             <input type="submit" value="Lisää!"/>
          </form>
 </div>

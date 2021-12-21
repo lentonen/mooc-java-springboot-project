@@ -44,5 +44,6 @@ public class PictureService {
         Long pictureOwner = getPictureOwner(pictureId);
         return accountService.follows(loggedId, pictureOwner);
     }
+   
     
 }

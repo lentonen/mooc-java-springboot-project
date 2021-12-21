@@ -25,4 +25,6 @@ public class FileObject extends AbstractPersistable<Long> {
     
     @ManyToOne
     private Account owner;
+    
+    private String description;
 }
