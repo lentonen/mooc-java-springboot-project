@@ -31,6 +31,10 @@ public class SearchPageController {
     @PostMapping("/mainPage/search")
     public String search(Model model, @RequestParam String name) {
         model.addAttribute("accounts", accountService.findAccounts(name));
+        
+        // Viedään tieto kirjautuneen käyttäjän nicknamesta
+        model.addAttribute("loggedNickname", accountService.getLoggedNickame());
+        
         return "search";
     }
    

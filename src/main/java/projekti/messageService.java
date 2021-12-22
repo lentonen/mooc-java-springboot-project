@@ -48,6 +48,17 @@ public class MessageService {
     
     
     /**
+     * Palauttaa tiettyyn entiteettiin (kuva tai seinäviesti) liittyvät kommentit. Palauttaa maksimissaan 10 kommenttia. tämä rajoite oli annettu 
+     * harkkatyön ohjeessa.
+     * @param entityId entiteetin Id
+     * @return Kuvan tai seinäviestin kommentit
+     */
+    public List<Message> findComments(Long entityId) {
+        return messageRepository.findTop10ByEntityIdOrderByMessageDateDescMessageTimeDesc(entityId);
+    }
+    
+    
+    /**
      * Palauttaa kaikki käyttäjän seinäviestien kommentit
      * @param accountId käyttäjä jonka viestien kommentteja etsitään
      * @return käyttäjän seinäviestien kommentit
@@ -84,4 +95,7 @@ public class MessageService {
         msg.setEntityId(messageId);
         messageRepository.save(msg);
     }
+    
+    
+    
 }

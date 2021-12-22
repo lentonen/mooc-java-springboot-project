@@ -98,7 +98,7 @@
         <div class="d-flex justify-content-center row">
           <div class="col-md-8 ">
             <div th:each="wallMessage : ${wallMessages}" class="d-flex flex-column comment-section mt-3" id="myGroup">
-              <div class="bg-white p-2 border-bottom px-4">
+              <div class="bg-white p-2 border-bottom px-4 mt-1 ml-1 mr-1">
                 <div class="d-flex flex-row user-info">
                     <div class="rounded-circle overflow-hidden custom-circle-image">
                       <img th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" style="width:150px">
@@ -141,7 +141,7 @@
                           <div class="reply-section">
                             <div th:with="loggedUserId=${loggedUserId},URI=${#httpServletRequest.requestURI}">
                               <form th:action="@{{URI}/like/{loggedUserId}/wallMessage/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
-                                <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${#lists.size(comment.likes)}" class="ml-2">10</span><span class="dot ml-2"></span>
+                                  <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${#lists.size(comment.likes)}" class="ml-2">10</span><span class="dot ml-2"></span></div>
                               </form>
                             </div>
                           </div>

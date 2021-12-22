@@ -57,11 +57,15 @@ public class MainPageController {
         // Jos url löytyy joltakin käyttäjältä, palautetaan käyttäjän sivu
         try {
             String name = accountService.getNickname(url);
+            String loggedNickname = accountService.getLoggedNickame();
             Long userId = accountService.getId(url);
             Long loggedUserId = accountService.getLoggedId();
             
             // Viedään tieto, minkä nimisen käyttäjän sivulla ollaan
             model.addAttribute("nickname", name);
+            
+            // Viedään tieto kirjautuneen käyttäjän nicknamesta
+            model.addAttribute("loggedNickname", loggedNickname);
             
             // Sivun omistajan profiilikuvan ID.
             model.addAttribute("profilePictureId", accountRepository.findByUrlAddress(url).getProfilePictureId());  
@@ -89,7 +93,6 @@ public class MainPageController {
             
             // Ladataan wallMessaget
             model.addAttribute("wallMessages", messageRepository.findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc(follow, null));
-            List<Message> msg = messageService.findAllCommentsByUser(userId);
             model.addAttribute("comments", messageService.findAllCommentsByUser(userId));
             
             // Viedään sisään kirjautuneen käyttäjän profiilikuvan ID

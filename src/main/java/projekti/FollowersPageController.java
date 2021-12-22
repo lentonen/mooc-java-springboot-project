@@ -40,6 +40,8 @@ public class FollowersPageController {
         String nickname = accountService.getLoggedNickame();
         List<Followers> followers = accountRepository.findByNickname(nickname).getFollowers();
 
+        // Viedään tieto kirjautuneen käyttäjän nicknamesta
+        model.addAttribute("loggedNickname", accountService.getLoggedNickame());
 
         model.addAttribute("followers", followers);
         model.addAttribute("message", accountService.getLoggedNickame());

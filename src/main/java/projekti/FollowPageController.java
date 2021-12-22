@@ -42,6 +42,10 @@ public class FollowPageController {
 
         model.addAttribute("accounts", accounts);
         model.addAttribute("message", accountService.getLoggedNickame());
+        
+        // Viedään tieto kirjautuneen käyttäjän nicknamesta
+        model.addAttribute("loggedNickname", accountService.getLoggedNickame());
+        
         return "followPage";
     }
     

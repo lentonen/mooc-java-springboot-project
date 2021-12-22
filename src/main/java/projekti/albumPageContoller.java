@@ -1,6 +1,7 @@
 package projekti;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,6 +29,9 @@ public class AlbumPageContoller {
     
     @Autowired
     PictureLikeRepository pictureLikeRepository;
+    
+    @Autowired
+    MessageService messageService;
     
     /*@GetMapping("/album")
     public String show(Model model) {
@@ -88,6 +92,17 @@ public class AlbumPageContoller {
         // Viedään tieto kuka on kirjautuneena
         model.addAttribute("loggedUserId", accountService.getLoggedId());
         
+        // Viedään tieto kuka omistaa albumin
+        model.addAttribute("albumOwnerId", accountService.getIdByUsingUrl(url));
+        
+        // Viedään tieto kirjautuneen käyttäjän nicknamesta
+        model.addAttribute("loggedNickname", accountService.getLoggedNickame());
+        
+        // Tarkastellaan ketä kirjautunut käyttäjä seuraa. Viedään tieto kommentointia varten    
+        List<Long> loggedUserFollows = accountService.isFollowingId(accountService.getLoggedId());
+        loggedUserFollows.add(loggedUserId);
+        model.addAttribute("followList", loggedUserFollows);
+        
         // HUOM! tässä versiossa kaikki käyttäjät voivat tarkastella toisten kuvia
         // Käyttäjä ei näe muiden käyttäjien omaa albumia
         //if (!pictureRepository.existsByOwnerIdAndId(accountId, id))
@@ -100,6 +115,7 @@ public class AlbumPageContoller {
             model.addAttribute("current", id);
             String description = pictureRepository.getOne(id).getDescription();
             model.addAttribute("description", pictureRepository.getOne(id).getDescription());
+            model.addAttribute("comments", messageService.findComments(id));
         }
         
         // Viedään tieto seuraavan kuvan id:stä.
@@ -193,6 +209,13 @@ public class AlbumPageContoller {
          if (pictureLikeRepository.existsByAccountIdAndPictureId(accountId, pictureId))
             return "redirect:/mainPage/"+url+"/album/"+pictureId;
         pictureLikeRepository.save(new PictureLike(accountService.getLoggedAccount(), pictureRepository.getById(pictureId)));
+        return "redirect:/mainPage/"+url+"/album/"+pictureId;
+    }
+    
+    
+    @PostMapping("mainPage/{url}/album/{pictureId}/pictureComment")
+    public String createComment(@PathVariable String url, @RequestParam String comment, @PathVariable Long pictureId) {
+        messageService.createWallMessageComment(comment, accountService.getLoggedAccount(), pictureId);
         return "redirect:/mainPage/"+url+"/album/"+pictureId;
     }
 }
