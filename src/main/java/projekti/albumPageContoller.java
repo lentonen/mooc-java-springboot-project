@@ -26,6 +26,9 @@ public class AlbumPageContoller {
     @Autowired
     PictureService pictureService;
     
+    @Autowired
+    PictureLikeRepository pictureLikeRepository;
+    
     /*@GetMapping("/album")
     public String show(Model model) {
         try {
@@ -78,6 +81,12 @@ public class AlbumPageContoller {
         String name = accountService.getNickname(url);
         model.addAttribute("nickname", name);
         model.addAttribute("count", pictureRepository.countByOwnerId(userId));
+        
+        // Viedään tieto montako tykkäystä kuvassa on
+        model.addAttribute("likes", pictureService.getLikes(id));
+        
+        // Viedään tieto kuka on kirjautuneena
+        model.addAttribute("loggedUserId", accountService.getLoggedId());
         
         // HUOM! tässä versiossa kaikki käyttäjät voivat tarkastella toisten kuvia
         // Käyttäjä ei näe muiden käyttäjien omaa albumia
@@ -176,5 +185,14 @@ public class AlbumPageContoller {
             return "redirect:/mainPage/" + url +"/album/";
         }
         
+    }
+    
+    
+    @PostMapping("mainPage/{url}/album/like/{accountId}/picture/{pictureId}")
+    public String like(@PathVariable String url, @PathVariable Long accountId, @PathVariable Long pictureId) {
+         if (pictureLikeRepository.existsByAccountIdAndPictureId(accountId, pictureId))
+            return "redirect:/mainPage/"+url+"/album/"+pictureId;
+        pictureLikeRepository.save(new PictureLike(accountService.getLoggedAccount(), pictureRepository.getById(pictureId)));
+        return "redirect:/mainPage/"+url+"/album/"+pictureId;
     }
 }

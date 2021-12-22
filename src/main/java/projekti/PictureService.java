@@ -54,6 +54,16 @@ public class PictureService {
     public Long pictureCount(Long accountId) {
         return pictureRepository.countByOwnerId(accountId);
     }
+    
+    
+    /**
+     * Kertoo paljonko kuvalla on tykkäyksiä
+     * @param pictureId Kuva jonka tykkäyksiä etsiään
+     * @return  tykkäysten lukumäärä
+     */
+    public int getLikes(Long pictureId) {
+        return pictureRepository.getOne(pictureId).getLikes().size();
+    }
    
     
 }
