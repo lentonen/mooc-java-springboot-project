@@ -17,10 +17,7 @@
     </head>
     
     <body>
-        
-        <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1 id ="header" th:text="${'LeisBook / ' + message}">LeisBook / nickname </h1>
-</div>
+
 
 <nav th:replace="fragments/navigation-logged :: nav">
     <p>navigation with links and searchbar</p>
@@ -39,8 +36,8 @@
         
 <div class="container">
     <div class="row" th:each="follower : ${followers}">
-        <div class="col-2"> <span display="inline-block"  th:text="${follower.from.nickname}">nickname</span></div>
-        <div class="col-2"><span display="inline-block"  th:text="${follower.followDate}">pvm</span></div>
+        <div class="col-2 d-flex align-items-center"> <span display="inline-block"  th:text="${follower.from.nickname}">nickname</span></div>
+        <div class="col-2 d-flex align-items-center"><span display="inline-block"  th:text="${follower.followDate}">pvm</span></div>
         <div class="col-2"><span th:if="${!follower.prevent}"> 
           <form display="inline-block" th:action="@{/followersPage/{id}/prevent(id=${follower.from.id})}" th:method="POST">
               <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"/>Estä seuraaminen</button>
@@ -56,9 +53,9 @@
 </div>
 
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
-</div>
+<footer th:replace="fragments/footer :: footer">
+    <p>footer</p>
+</footer>
 
 
     </body>

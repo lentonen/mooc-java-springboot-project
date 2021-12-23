@@ -53,6 +53,12 @@ public class AlbumPageContoller {
         } 
     }*/
     
+    @GetMapping("/album")
+    public String showOwnAlbum() {
+        String url = accountService.getLoggedUrl();
+        return "redirect:/mainPage/" + url +"/album";
+    }
+    
     
     @GetMapping("/mainPage/{url}/album")
     public String show(Model model, @PathVariable String url) {

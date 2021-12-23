@@ -29,6 +29,7 @@
             .custom-circle-image img {
               object-fit: cover;
             }
+
         </style>
     </head>
     
@@ -42,13 +43,13 @@
         
 <div class="container" style="margin-top:30px">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <h2><span th:text="${nickname}"></span> - Kuvat (<span th:text="${count}">count</span>)</h2>
     </div>
   </div>
     <div class="row" th:if="${current != null}">
-        <div class="col-7 ">
-          <img th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
+        <div class="col-md-7 ">
+            <img style="max-width: 100%;height: auto;" th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
           <div class="d-flex flex-row flex-grow-0 align-items-center">
             <div class="mr-3 mt-3" th:if="${previous != null}">
               <a th:href="@{${previous}}"><i class="fa fa-angle-left" style="font-size:24px;color:#333333"></i></a>
@@ -99,7 +100,7 @@
     </div>
 </div>
         </div>
-      <div class="col-5 ">
+      <div class="col-md-5 ">
           <div class="jumbotron">
             <p class="lead"><span th:text="${description}">Kuvateksti</span></p>
             <div th:with="loggedUserId=${loggedUserId}, likes=${likes}">
@@ -140,27 +141,16 @@
           </div>
       </div>
     <div class="row">
-      <div class="col-7 d-flex flex-row flex-grow-0 align-items-center">
+      <div class="col-md-7 d-flex flex-row flex-grow-0 align-items-center">
         
-      </div>
-      <div class="col-5 ">
-          <p>fdsf</p> 
       </div>
     </div>
   </div>
-     
-    
 
-
-       
-
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
-</div>
-
-
-    </body>
+  <footer th:replace="fragments/footer :: footer">
+      <p>footer</p>
+  </footer>
+</body>
 </html>
 
 

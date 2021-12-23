@@ -72,7 +72,7 @@
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             <div th:with="URI=${#httpServletRequest.requestURI}">
-          <a class="nav-link active" th:href="@{{URI}/album(URI=${URI})}">Kuva-albumi</a>
+          <a class="nav-link active mt-2" style="width:150px" th:href="@{{URI}/album(URI=${URI})}">Kuva-albumi</a>
           </div>
         </li> 
       </ul>
@@ -154,10 +154,11 @@
       </div>
       <!--- Seinäpostaus loppuu tähän --->
     </div>
-      <div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Tämä seinä näyttää 25 uusinta viestiä</p>
-</div>
-  </div> 
+      
+  </div>
+  <footer th:replace="fragments/footer :: footer">
+    <p>footer</p>
+  </footer>
 
 
 

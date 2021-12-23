@@ -103,15 +103,12 @@ public class MainPageController {
    
             return "mainPage";
             
-        
         // Jos yrl ei löydy, niin edellinen heittää poikkeuksen. Käsitellään poikkeus siten, että ohjataan käyttäjä takaisin omalle sivulle.
         } catch (NullPointerException e) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String urlException = accountRepository.findByUsername(auth.getName()).getUrlAddress();
             return "redirect:"+urlException;
-        }
-        
-        
+        }   
     }
     
     
