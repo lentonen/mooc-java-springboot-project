@@ -33,6 +33,12 @@ public class AlbumPageContoller {
     @Autowired
     MessageService messageService;
     
+    @Autowired
+    MessageLikeRepository messageLikeRepository;
+    
+    @Autowired
+    MessageRepository messageRepository;
+    
     /*@GetMapping("/album")
     public String show(Model model) {
         try {
@@ -205,7 +211,7 @@ public class AlbumPageContoller {
     
     
     @PostMapping("mainPage/{url}/album/like/{accountId}/picture/{pictureId}")
-    public String like(@PathVariable String url, @PathVariable Long accountId, @PathVariable Long pictureId) {
+    public String likePicture(@PathVariable String url, @PathVariable Long accountId, @PathVariable Long pictureId) {
          if (pictureLikeRepository.existsByAccountIdAndPictureId(accountId, pictureId))
             return "redirect:/mainPage/"+url+"/album/"+pictureId;
         pictureLikeRepository.save(new PictureLike(accountService.getLoggedAccount(), pictureRepository.getById(pictureId)));
@@ -218,4 +224,15 @@ public class AlbumPageContoller {
         messageService.createWallMessageComment(comment, accountService.getLoggedAccount(), pictureId);
         return "redirect:/mainPage/"+url+"/album/"+pictureId;
     }
+    
+    
+    @PostMapping("mainPage/{url}/album/{pictureId}/like/{accountId}/pictureComment/{commentId}")
+    public String likeComment(@PathVariable String url, @PathVariable Long pictureId, @PathVariable Long accountId, @PathVariable Long commentId) {
+         if (messageLikeRepository.existsByAccountIdAndMessageId(accountId, commentId))
+            return "redirect:/mainPage/"+url+"/album/"+pictureId;
+        messageLikeRepository.save(new MessageLike(accountService.getLoggedAccount(), messageRepository.getById(commentId)));
+        return "redirect:/mainPage/"+url+"/album/"+pictureId;
+    }
+    
+    
 }

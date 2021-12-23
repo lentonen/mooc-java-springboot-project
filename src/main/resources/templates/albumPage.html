@@ -128,7 +128,7 @@
               <div class="comment-text-sm"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei</span></div>
                 <div class="reply-section">
                     <div th:with="loggedUserId=${loggedUserId},URI=${#httpServletRequest.requestURI}">
-                      <form th:action="@{{URI}/like/{loggedUserId}/wallMessage/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
+                      <form th:action="@{{URI}/like/{loggedUserId}/pictureComment/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
                         <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${#lists.size(comment.likes)}" class="ml-2">10</span><span class="dot ml-2"></span></div>
                       </form>
                     </div>
