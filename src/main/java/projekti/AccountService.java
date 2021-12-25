@@ -309,23 +309,15 @@ public class AccountService {
      * @param follow 
      */
     public void deleteUsersWhoPrevented(Long userId, List<Long> follow) {
-        /*Iterator<Long> i = follow.iterator(); TODO: korjaa tämä toimivaksi
+        Iterator<Long> i = follow.iterator(); //TODO: korjaa tämä toimivaksi
         while (i.hasNext()) {
             Long followId = i.next();
             try {
                 if (followersRepository.findByFromIdAndToId(userId, followId).getPrevent())
-                    follow.remove(followId);
+                    i.remove();
             } catch (NullPointerException e) {
                 // Älä tee mitään. Heittää poikkeuksen, jos follow-listassa ei ole oman ID:n lisäksi mitään muuta
-            } */
-        
-        for (Long followId : follow) {
-            try {
-                if (followersRepository.findByFromIdAndToId(userId, followId).getPrevent())
-                follow.remove(followId);
-            } catch (NullPointerException e) {
-                // Älä tee mitään. Heittää poikkeuksen, jos follow-listassa ei ole oman ID:n lisäksi mitään muuta
-            }
+            } 
         }
     }
     
