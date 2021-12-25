@@ -53,12 +53,12 @@
         <div th:if ="${!ownPageBoolean}">
             <span th:if="${!followBoolean}">
             <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/follow(url=${user.urlAddress})}" th:method="POST">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button>
+                <button class="btn btn-outline-success my-2 mb-1" type="submit">Follow</button>
             </form>
             </span>
             <span th:unless="${!followBoolean}">
             <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/unfollow(url=${user.urlAddress})}" th:method="POST">
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Unfollow</button>
+                <button class="btn btn-outline-danger my-2 mb-1" type="submit">Unfollow</button>
             </form>
           </span>
       </div>
@@ -115,18 +115,19 @@
                 </div>
               </div>
               
-                 <!--- Kommentin lisääminen--->
-              <div class="d-flex flex-row add-comment-section mt-4 mb-4" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
-                  <!--- Käyttäjä voi lisätä kommentin seinäviestiin
-              <div class="rounded-circle overflow-hidden custom-circle-image-comment">
-                <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
-              </div>--->
-                    <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
-                      <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
-                      <button class="btn btn-primary" type="submit">Kommentoi</button>
-                    </form>
-              </div>
-               
+                 <!--- Kommentin lisääminen, estetään jos seuraaminen estetty --->
+              <div th:if="${!preventedBoolean}">
+                <div class="d-flex flex-row add-comment-section mt-4 mb-4" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
+                    <!--- Käyttäjä voi lisätä kommentin seinäviestiin
+                <div class="rounded-circle overflow-hidden custom-circle-image-comment">
+                  <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
+                </div>--->
+                      <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
+                        <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
+                        <button class="btn btn-primary" type="submit">Kommentoi</button>
+                      </form>
+                </div>
+              </div> 
 
                 <!--- kommentit --->
                       <div th:each="comment : ${comments}">

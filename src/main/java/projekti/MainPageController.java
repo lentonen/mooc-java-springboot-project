@@ -76,9 +76,10 @@ public class MainPageController {
             // Tieto kenen käyttäjän sivulla ollaan
             model.addAttribute("user", accountRepository.findByUrlAddress(url));
             
-            // Viedään tieto seuraako käyttäjä sivun omistajaa
+            // Viedään tieto seuraako käyttäjä sivun omistajaa ja onko sivun omistaja estänyt kirjautuneen käyttäjän
             boolean follows = accountService.follows(accountService.getLoggedId(), accountRepository.findByUrlAddress(url).getId());
             model.addAttribute("followBoolean", follows);
+            model.addAttribute("preventedBoolean", accountService.isPrevented(loggedUserId, userId));
             
             // Haetaan käyttäjän seuraamat tilit ja lisätään oma tili listaan seinäkommenttien hakemista varten. 
             List<Long> follow = accountService.isFollowingId(userId);

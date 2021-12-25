@@ -339,4 +339,20 @@ public class AccountService {
     public String getLoggedUrl() {
         return getUrl(getLoggedNickame());
     }
+    
+    
+    /**
+     * Palauttaa tiedon onko seuraaminen estetty.
+     * @param from seuraaja
+     * @param to ketä seurataan
+     * @return true jos seuraaminen estetty, false jos ei. Palauttaa false, jos tarkastellaan onko käyttäjä estänyt itsensä.
+     * Jos käyttäjä ei seuraa toista käyttäjää, niin palautetaan false.
+     */
+    public Boolean isPrevented(Long from, Long to) {
+        if (from == to)
+            return false;
+        if (followersRepository.existsByFromIdAndToId(from, to))
+            return followersRepository.findByFromIdAndToId(from, to).getPrevent();
+        return false;
+    } 
 }
