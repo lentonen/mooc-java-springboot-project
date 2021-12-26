@@ -2,14 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello world</title>
+        <title>Seinä</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href = "mainPageStyle.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <style>
             .fakeimg {
              height: 200px;
@@ -53,12 +49,12 @@
         <div th:if ="${!ownPageBoolean}">
             <span th:if="${!followBoolean}">
             <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/follow(url=${user.urlAddress})}" th:method="POST">
-                <button class="btn btn-outline-success my-2 mb-1" type="submit">Follow</button>
+                <button class="btn btn-outline-success my-2 mb-1" type="submit">Seuraa</button>
             </form>
             </span>
             <span th:unless="${!followBoolean}">
             <form th:with="user=${user}" display="inline-block" th:action="@{/user/{url}/unfollow(url=${user.urlAddress})}" th:method="POST">
-                <button class="btn btn-outline-danger my-2 mb-1" type="submit">Unfollow</button>
+                <button class="btn btn-outline-danger my-2 mb-1" type="submit">Lopeta seuraaminen</button>
             </form>
           </span>
       </div>
@@ -79,26 +75,27 @@
     </div>
     <div class="col-sm-10 mt-3">
         
-      <!--- Käyttäjä voi lisätä kommentin seinälle --->
-      <div th:if ="${ownPageBoolean}">
-          <div class="" id="wallMessage">
-          <form th:action="@{/wallMessage}" method="POST">
-            <div class="form-group shadow-textarea">
-              <textarea name="message" class="form-control z-depth-1" id="wallMessage" rows="3" placeholder="Mitä mietit?"></textarea>
-              <div style="text-align:right;"><button id="sendWallMessage" style="margin-top: 0px;" class="btn btn-primary btn-sm shadow-none mt-2" type="submit">Lisää seinälle</button></div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!---  --->
+      
       
       <!--- Yksittäinen seinäpostaus  --->
       
-      <div class="container mt-5 bg-light">
-        <div class="d-flex justify-content-center row">
-          <div class="col-md-8 ">
-            <div th:each="wallMessage : ${wallMessages}" class="d-flex flex-column comment-section mt-3" id="myGroup">
-              <div class="bg-white p-2 border-bottom px-4 mt-1 ml-1 mr-1">
+      <div class="container mt-5 bg-white">
+        <div class="d-flex justify-content-center row " >
+          <div class="col-md-8">
+            <!--- Käyttäjä voi lisätä kommentin seinälle --->
+            <div th:if ="${ownPageBoolean}">
+                <div class="" id="wallMessage">
+                <form th:action="@{/wallMessage}" method="POST">
+                  <div class="form-group shadow-textarea">
+                    <textarea name="message" class="form-control z-depth-1" id="wallMessage" rows="3" placeholder="Mitä mietit?"></textarea>
+                    <div style="text-align:right;"><button id="sendWallMessage" style="margin-top: 0px;" class="btn btn-primary shadow-none mt-2" type="submit">Lisää seinälle</button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!---  --->
+            <div th:each="wallMessage : ${wallMessages}" class="d-flex flex-column comment-section mt-3 bg-light rounded border " style="border-width:2px !important;" id="myGroup">
+              <div class="bg-white p-2 border-bottom px-4 mt-3 ml-3 mr-3">
                 <div class="d-flex flex-row user-info">
                     <div class="rounded-circle overflow-hidden custom-circle-image">
                       <img th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" style="width:150px">
@@ -117,28 +114,28 @@
               
                  <!--- Kommentin lisääminen, estetään jos seuraaminen estetty --->
               <div th:if="${!preventedBoolean}">
-                <div class="d-flex flex-row add-comment-section mt-4 mb-4" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
+                <div class="d-flex flex-row add-comment-section mt-4 mb-4 ml-2" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
                     <!--- Käyttäjä voi lisätä kommentin seinäviestiin
                 <div class="rounded-circle overflow-hidden custom-circle-image-comment">
                   <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
                 </div>--->
                       <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
                         <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
-                        <button class="btn btn-primary" type="submit">Kommentoi</button>
+                        <button class="btn btn-primary btn-sm mr-3" type="submit">Kommentoi</button>
                       </form>
                 </div>
               </div> 
 
                 <!--- kommentit --->
                       <div th:each="comment : ${comments}">
-                        <div th:if="${comment.entityId == wallMessage.id}" class="commented-section mt-3 ml-2">
+                        <div th:if="${comment.entityId == wallMessage.id}" class="commented-section ml-4 mb-3 mr-3 bg-white">
                           <div class="d-flex flex-row align-items-center commented-user">
-                            <div class="rounded-circle overflow-hidden custom-circle-image-comment mr-2">
+                            <div class="rounded-circle overflow-hidden custom-circle-image-comment mr-2 ml-2 mt-2">
                                <img th:src="@{/album/{id}/content(id=${comment.account.profilePictureId})}" style=" width:100px"> 
                             </div>
                             <h5 class="mr-2"><span th:text="${comment.account.nickname}">Nickname</span></h5><span class="dot mb-1"></span><span th:text="${comment.messageDate}" class="mb-1 ml-2 text-black-50">pvm</span><span th:text="${comment.messageTime}" class=" mb-1 ml-2 date text-black-50">13:45</span>
                           </div>
-                          <div class="comment-text-sm"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                          <div class="comment-text-sm ml-3"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
                           <div class="reply-section">
                             <div th:with="loggedUserId=${loggedUserId},URI=${#httpServletRequest.requestURI}">
                               <form th:action="@{{URI}/like/{loggedUserId}/wallMessage/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
@@ -160,10 +157,6 @@
   <footer th:replace="fragments/footer :: footer">
     <p>footer</p>
   </footer>
-
-
-
-
     </body>
 </html>
 

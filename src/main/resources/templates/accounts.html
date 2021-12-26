@@ -5,9 +5,9 @@
         <title>Register new account</title>
     </head>
     <body>
-
+        <h1>Registeration page</h1>
+        <p>This is just very simple registeration page and should be updated in the future :)</p>
         <h2>Accounts</h2>
-
         <ol>
             <li th:each="account : ${accounts}">
                 <span th:text="${account.username}">msg</span>
@@ -15,11 +15,11 @@
         </ol>
 
         <form method="POST" th:action="@{/accounts}">
-            <input type="text" name="username"/>
-            <input type="text" name="nickname"/>
-            <input type="password" name="password"/>
-            <input type="text" name="urlAddress"/>
-            <input type="submit" value="Add new account!"/>
+            <p>Username</p><input type="text" name="username"/>
+            <p>Nickname</p><input type="text" name="nickname"/>
+            <p>Password</p><input type="password" name="password"/>
+            <p>Personal URL </p><input type="text" name="urlAddress"/>
+            <p></p><input type="submit" value="Add new account!"/>
         </form>
     </body>
 </html>
