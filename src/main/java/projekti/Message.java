@@ -3,6 +3,7 @@ package projekti;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,7 +25,7 @@ public class Message extends AbstractPersistable<Long> {
     @ManyToOne
     private Account account;
 
-    @OneToMany(mappedBy = "message")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "message", orphanRemoval = true)
     private List<MessageLike> likes;
     
     LocalDate messageDate = java.time.LocalDate.now();

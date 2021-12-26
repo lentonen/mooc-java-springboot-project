@@ -1,6 +1,7 @@
 package projekti;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -30,6 +31,6 @@ public class FileObject extends AbstractPersistable<Long> {
     
     private String description;
     
-    @OneToMany(mappedBy = "picture")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true)
     private List<PictureLike> likes;
 }

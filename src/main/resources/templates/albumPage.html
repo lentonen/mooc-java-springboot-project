@@ -38,10 +38,10 @@
         <h2><span th:text="${nickname}"></span> - Kuvat (<span th:text="${count}">count</span>)</h2>
     </div>
   </div>
-    <div class="row" th:if="${current != null}">
+    <div class="row">
         <div class="col-md-7 ">
-            <img style="max-width: 100%;height: auto;" th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
-          <div class="d-flex flex-row flex-grow-0 align-items-center">
+            <img th:if="${current != null}" style="max-width: 100%;height: auto;" th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
+          <div th:if="${current != null}" class="d-flex flex-row flex-grow-0 align-items-center">
             <div class="mr-3 mt-3" th:if="${previous != null}">
               <a th:href="@{${previous}}"><i class="fa fa-angle-left" style="font-size:24px;color:#333333"></i></a>
             </div>
@@ -91,7 +91,7 @@
             </div>
           </div>
         </div>
-      <div class="col-md-5 bg-light rounded">
+      <div th:if="${current != null}" class="col-md-5 bg-light rounded">
           <div class="jumbotron mt-3">
             <p class="lead"><span th:text="${description}">Kuvateksti</span></p>
             <div th:with="loggedUserId=${loggedUserId}, likes=${likes}">
