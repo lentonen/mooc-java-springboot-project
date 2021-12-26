@@ -1,5 +1,9 @@
 #FileLock
+<<<<<<< HEAD
 #Sun Dec 26 20:44:16 EET 2021
+=======
+#Sun Dec 26 20:37:25 EET 2021
+>>>>>>> vko51
 server=192.168.0.16\:60097
 hostName=192.168.0.16
 method=file

@@ -12,6 +12,7 @@ public interface PictureRepository  extends JpaRepository<FileObject, Long> {
 //
     FileObject findTop1ByIdLessThanAndOwnerIdEqualsOrderByIdDesc(Long id, Long accountId);
     FileObject findTop1ByIdGreaterThanAndOwnerIdEqualsOrderByIdAsc(Long id, Long accountId);
+    FileObject getById(Long id);
     
     
     // Laskee kuinka paljon käyttäjällä on kuvia

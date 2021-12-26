@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello world</title>
+        <title>Etsi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,42 +15,28 @@
             }
         </style>
     </head>
-    
     <body>
-        
-        <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1 th:text="${'Hello ' + message}">My First Bootstrap 4 Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
 
-<nav th:replace="fragments/navigation-logged :: nav">
+      <nav th:replace="fragments/navigation-logged :: nav">
         <p>navigation with links and searchbar</p>
-    </nav>     
-
- 
-        
-<div class="container" style="margin-top:30px">
-  <div class="row">
-    <div class="col-sm-16">
-      <h2>Etsi käyttäjiä</h2>
-    </div>
-    <div class="col-sm-8">
-        <ul name="foundUsers">
-            <li th:each="account : ${accounts}">
-                 <a name="linkToUser" th:href="@{'/mainPage/' + ${account.urlAddress}}"><span display="inline-block"  th:text="${account.nickname}">Nickname</span></a>
-                
-
-            </li>
-        </ul>
-    </div>
-  </div>
-</div>
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
-</div>
-
-
+      </nav>     
+      <div class="container" style="margin-top:30px">
+        <div class="row">
+          <div class="col-sm-16">
+            <h2>Etsi käyttäjiä</h2>
+          </div>
+          <div class="container">
+              <div class="row" th:each="account : ${accounts}">
+                  <div class="col-2 d-flex align-items-center">
+                      <a name="linkToUser" th:href="@{'/mainPage/' + ${account.urlAddress}}"><span display="inline-block"  th:text="${account.nickname}">nickname</span></a>
+                  </div>
+              </div>
+          </div> 
+        </div>
+      </div>
+      <footer th:replace="fragments/footer :: footer">
+        <p>footer</p>
+      </footer>
     </body>
 </html>
 

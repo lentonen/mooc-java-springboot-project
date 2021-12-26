@@ -32,9 +32,12 @@ public class Account extends AbstractPersistable<Long> {
     @OneToMany(mappedBy="from")
     private List<Followers> following;
     
+    @OneToMany(mappedBy = "account")
+    private List<MessageLike> likes;
     
-
-
+    @OneToMany(mappedBy = "account")
+    private List<PictureLike> pictureLikes;
+   
     
     Account (String username, String realname, String password, String urlAddress) {
         this.setUsername(username);

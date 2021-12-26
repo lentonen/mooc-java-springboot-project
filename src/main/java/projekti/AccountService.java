@@ -302,4 +302,57 @@ public class AccountService {
             return true;
         return false;
     }
+    
+    /**
+     * Poistetaan seurattujen henkilöiden listasta ne, jotka ovat estäneet seuraamisen
+     * @param userId
+     * @param follow 
+     */
+    public void deleteUsersWhoPrevented(Long userId, List<Long> follow) {
+        Iterator<Long> i = follow.iterator(); //TODO: korjaa tämä toimivaksi
+        while (i.hasNext()) {
+            Long followId = i.next();
+            try {
+                if (followersRepository.findByFromIdAndToId(userId, followId).getPrevent())
+                    i.remove();
+            } catch (NullPointerException e) {
+                // Älä tee mitään. Heittää poikkeuksen, jos follow-listassa ei ole oman ID:n lisäksi mitään muuta
+            } 
+        }
+    }
+    
+    
+    /**
+     * Palauttaa url vastaavan ID:n
+     * @param url nimi jota vastaava ID palautetaan
+     * @return nicknamea vastaava ID
+     */
+    public Long getIdByUsingUrl(String url) {
+        return accountRepository.findByUrlAddress(url).getId();
+    }
+    
+    
+    /**
+     * Palauttaa kirjautuneen käyttäjnä url-tunnisteen
+     * @return kirjautuneen käyttäjän url
+     */
+    public String getLoggedUrl() {
+        return getUrl(getLoggedNickame());
+    }
+    
+    
+    /**
+     * Palauttaa tiedon onko seuraaminen estetty.
+     * @param from seuraaja
+     * @param to ketä seurataan
+     * @return true jos seuraaminen estetty, false jos ei. Palauttaa false, jos tarkastellaan onko käyttäjä estänyt itsensä.
+     * Jos käyttäjä ei seuraa toista käyttäjää, niin palautetaan false.
+     */
+    public Boolean isPrevented(Long from, Long to) {
+        if (from == to)
+            return false;
+        if (followersRepository.existsByFromIdAndToId(from, to))
+            return followersRepository.findByFromIdAndToId(from, to).getPrevent();
+        return false;
+    } 
 }

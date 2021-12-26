@@ -4909,3 +4909,281 @@ SELECT COUNT(id) FROM FROM file_object fo WHERE fo.owner_id = ? [42001-200]
 2021-12-09 13:20:46 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNT(ID) FROM FROM[*] FILE_OBJECT FO WHERE FO.OWNER_ID = ?"; expected "identifier"; SQL statement:
 SELECT COUNT(id) FROM FROM file_object fo WHERE fo.owner_id = ? [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:32:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:35:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:36:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:36:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:37:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:37:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:39:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:41:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, MESSAGE_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, message_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE ACCOUNT_LIKES ADD CONSTRAINT FKT72ODVGJIQDL82EU3MQXR3NKN FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table account_likes add constraint FKt72odvgjiqdl82eu3mqxr3nkn foreign key (likes_id) references like [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FK70PTJAFC05VGD5FPADAQ5P1JS FOREIGN KEY (MESSAGE_ID) REFERENCES MESSAGE"; expected "identifier"; SQL statement:
+alter table like add constraint FK70ptjafc05vgd5fpadaq5p1js foreign key (message_id) references message [42001-200]
+2021-12-20 12:45:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE MESSAGE_LIKES ADD CONSTRAINT FK9EGMHXL4E95G7C1GTIW5SJQ9B FOREIGN KEY (LIKES_ID) REFERENCES LIKE[*]"; expected "identifier"; SQL statement:
+alter table message_likes add constraint FK9egmhxl4e95g7c1gtiw5sjq9b foreign key (likes_id) references like [42001-200]
+2021-12-20 12:48:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, ENTITY_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, entity_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:50:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ACCOUNT_ID BIGINT, ENTITY_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, account_id bigint, entity_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:52:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:52:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-20 12:54:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE LIKE[*] (ID BIGINT NOT NULL, ENTITY_ID BIGINT, ACCOUNT_ID BIGINT, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table like (id bigint not null, entity_id bigint, account_id bigint, primary key (id)) [42001-200]
+2021-12-20 12:54:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LIKE[*] ADD CONSTRAINT FKT89M5CQQW1AYMP2YH8FPE033E FOREIGN KEY (ACCOUNT_ID) REFERENCES ACCOUNT"; expected "identifier"; SQL statement:
+alter table like add constraint FKt89m5cqqw1aymp2yh8fpe033e foreign key (account_id) references account [42001-200]
+2021-12-21 10:41:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Hexadecimal string with odd number of characters: "ffd8ff... (60517 bytes)"; SQL statement:
+UPDATE "PUBLIC"."FILE_OBJECT" SET "ID"=? ,"CONTENT"=? ,"OWNER_ID"=? ,"DESCRIPTION"=?  WHERE "ID"=? [90003-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.util.StringUtils.convertHexToBytes(StringUtils.java:1040)
+	at org.h2.value.Value.convertToBytes(Value.java:1236)
+	at org.h2.value.Value.convertTo(Value.java:826)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Update.update(Update.java:176)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at org.h2.result.UpdatableRow.updateRow(UpdatableRow.java:286)
+	at org.h2.jdbc.JdbcResultSet.updateRow(JdbcResultSet.java:3044)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1140)
+	at org.h2.server.web.WebApp.process(WebApp.java:247)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-12-21 10:41:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Hexadecimal string with odd number of characters: "ffd8ff... (60517 bytes)"; SQL statement:
+UPDATE "PUBLIC"."FILE_OBJECT" SET "ID"=? ,"CONTENT"=? ,"OWNER_ID"=? ,"DESCRIPTION"=?  WHERE "ID"=? [90003-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.util.StringUtils.convertHexToBytes(StringUtils.java:1040)
+	at org.h2.value.Value.convertToBytes(Value.java:1236)
+	at org.h2.value.Value.convertTo(Value.java:826)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Update.update(Update.java:176)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at org.h2.result.UpdatableRow.updateRow(UpdatableRow.java:286)
+	at org.h2.jdbc.JdbcResultSet.updateRow(JdbcResultSet.java:3044)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1140)
+	at org.h2.server.web.WebApp.process(WebApp.java:247)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)

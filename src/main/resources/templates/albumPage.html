@@ -1,80 +1,147 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Album</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <style>
-            .fakeimg {
-             height: 200px;
-             background: #aaa;
-            }
-        </style>
-    </head>
-    
-    <body>
-        
-        <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1 id ="header" th:text="${'LeisBook / ' + message}">LeisBook / nickname </h1>
-</div>
-
-<nav th:replace="fragments/navigation-logged :: nav">
+<head>
+  <meta charset="UTF-8" />
+  <title>Album</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .fakeimg {
+    height: 200px;
+    background: #aaa;
+    }
+    /* You can adjust the image size by increasing/decreasing the width, height */
+    .custom-circle-image {
+    width: 4.5vw; /* voi käyttää myös 5vw molemmissa */
+    height: 4.5vw;
+    }
+            
+    /* You can adjust the image size by increasing/decreasing the width, height */
+    .custom-circle-image-comment {
+    width: 3vw; /* voi käyttää myös 3vw molemmissa */
+    height:3vw;
+    }
+    .custom-circle-image img {
+    object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <nav th:replace="fragments/navigation-logged :: nav">
     <p>navigation with links and searchbar</p>
-</nav>
-
- 
-        
+  </nav>
+       
 <div class="container" style="margin-top:30px">
   <div class="row">
-    <div class="col-sm-16">
-      <h2>Kuvat (<span th:text="${count}">count</span>)</h2>
-    </div>      
+    <div class="col-sm-5">
+        <h2><span th:text="${nickname}"></span> - Kuvat (<span th:text="${count}">count</span>)</h2>
+    </div>
   </div>
-     <div th:if="${current != null}">
-            <img th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
-        </div>
-
-        <div th:if="${previous != null}">
-            <a th:href="@{/album/{id}(id=${previous})}">Previous</a>
-        </div>
-
-        <div th:if="${next != null}">
-            <a th:href="@{/album/{id}(id=${next})}">Next</a>
-        </div>
-        
-      <div th:if="${current != null}">
-        <form method="POST" th:action="@{/album/{id}/setProfilePicture(id=${current})}">
-          <input type="submit" value="Aseta profiilikuvaksi"/>
-            </form>
+    <div class="row" th:if="${current != null}">
+        <div class="col-md-7 ">
+            <img style="max-width: 100%;height: auto;" th:src="@{/album/{id}/content(id=${current})}" height = "400px"/>
+          <div class="d-flex flex-row flex-grow-0 align-items-center">
+            <div class="mr-3 mt-3" th:if="${previous != null}">
+              <a th:href="@{${previous}}"><i class="fa fa-angle-left" style="font-size:24px;color:#333333"></i></a>
+            </div>
+              <div th:if="${next != null}" class="mt-3">
+              <a th:href="@{${next}}"><i class="fa fa-angle-right" style="font-size:24px;color: #333333"></i></a>
+            </div>
+            <div th:with="URI=${#httpServletRequest.requestURI}">
+              <div th:if="${ownAlbum}">  
+                  <div th:if="${current != null}" class="d-flex flex-row flex-grow-0 align-items-center ml-2 mt-1">
+                  <div class="mr-3">
+                    <form method="POST" th:action="@{{URI}/setProfilePicture(URI=${URI})}">
+                        <button class="btn btn-primary shadow-none mt-2" type="submit">Asesta profiilikuvaksi</button>   
+                    </form>
+                  </div>
+                  <div class="">
+                    <form method="POST" th:action="@{{URI}/deletePicture(URI=${URI})}">
+                     <button class="btn btn-primary shadow-none mt-2" type="submit" value="Poista kuva">Poista kuva</button> 
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
           </div>
-        <div th:if="${current != null}">
-          <form method="POST" th:action="@{/album/{id}/deletePicture(id=${current})}">
-            <input type="submit" value="Poista kuva"/>
-          </form>
+          <div th:with="URI=${#httpServletRequest.requestURI}">
+            <div th:if="${ownAlbum}" class="mt-5">  
+              <div th:if="${current != null}">
+                <div th:if="${count < 10}">
+                  <h2>Lisää uusi kuva</h2> 
+                  <form method="POST" th:action="@{{URI}/save(URI=${URI})}" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file"/>
+                    <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
+                    <input type="submit" value="Lisää!"/>
+                  </form>
+                </div>
+                <div th:unless="${count < 10}">
+                  <p>Kuvapankki täynnä!</p>
+                </div>
+              </div>
+              <div th:unless="${current != null}">
+                <h2>Lisää uusi kuva</h2> 
+                  <form method="POST" th:action="@{/mainPage/{url}/album/{id}/save(id=0,url=${url})}" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file"/>
+                    <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
+                    <input type="submit" value="Lisää!"/>
+                  </form>
+              </div>
+            </div>
+          </div>
         </div>
+      <div class="col-md-5 bg-light rounded">
+          <div class="jumbotron mt-3">
+            <p class="lead"><span th:text="${description}">Kuvateksti</span></p>
+            <div th:with="loggedUserId=${loggedUserId}, likes=${likes}">
+                <form  th:action="@{like/{loggedUserId}/picture/{id}(id=${current},loggedUserId=${loggedUserId})}" th:method="POST">    
+                   <div class="d-flex flex-row flex-grow-0 align-items-center votings ml-1"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${likes}">15</span></div>
+                </form>
+            </div>
+          </div>
+          
+          <!--- Kommentin lisääminen--->
+              <div class="d-flex flex-row add-comment-section mt-4 mb-4 " th:with="followList=${followList}, user=${albumOwnerId}, URI=${#httpServletRequest.requestURI}">
+                    <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/pictureComment(URI=${URI})}" method="POST">
+                      <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
+                      <button class="btn btn-primary" type="submit">Kommentoi</button>
+                    </form>
+              </div>
+          <!--- Kommentit--->
+          <div th:each="comment : ${comments}">
+            <div class="commented-section mt-3 ml-2 mb-3 bg-white">
+              <div class="d-flex flex-row align-items-center commented-user">
+                <div class="rounded-circle overflow-hidden custom-circle-image-comment mr-2 ml-2 mt-2">
+                  <img th:src="@{/album/{id}/content(id=${comment.account.profilePictureId})}" style=" width:100px"> 
+                </div>
+                <h5 class="mr-2"><span th:text="${comment.account.nickname}">Nickname</span></h5><span class="dot mb-1"></span><span th:text="${comment.messageDate}" class="mb-1 ml-2 text-black-50">pvm</span><span th:text="${comment.messageTime}" class=" mb-1 ml-2 date text-black-50">13:45</span>
+              </div>
+              <div class="comment-text-sm ml-3 mt-1"><span th:text="${comment.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei</span></div>
+                <div class="reply-section">
+                    <div th:with="loggedUserId=${loggedUserId},URI=${#httpServletRequest.requestURI}">
+                      <form th:action="@{{URI}/like/{loggedUserId}/pictureComment/{id}(id=${comment.id},loggedUserId=${loggedUserId}, URI=${URI})}" th:method="POST">
+                        <div class="d-flex flex-row align-items-center voting-icons"><button class="btn" style="background-color:transparent" ><i class="fa fa-thumbs-o-up"></i></button><span th:text="${#lists.size(comment.likes)}" class="ml-2">10</span><span class="dot ml-2"></span></div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+          </div>
+              
+     
+          </div>
+      </div>
+    <div class="row">
+      <div class="col-md-7 d-flex flex-row flex-grow-0 align-items-center">
+        
+      </div>
+    </div>
+  </div>
 
-        <h2>Add new content</h2>
-          <form method="POST" th:action="@{/album}" enctype="multipart/form-data">
-            <input type="file" name="file" id="file"/>
-            <input type="submit" value="Lisää!"/>
-         </form>
-</div>
-
-
-
-       
-
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
-</div>
-
-
-    </body>
+  <footer th:replace="fragments/footer :: footer">
+      <p>footer</p>
+  </footer>
+</body>
 </html>
 
 

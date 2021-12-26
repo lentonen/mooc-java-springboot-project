@@ -1,8 +1,10 @@
 package projekti;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +27,9 @@ public class FileObject extends AbstractPersistable<Long> {
     
     @ManyToOne
     private Account owner;
+    
+    private String description;
+    
+    @OneToMany(mappedBy = "picture")
+    private List<PictureLike> likes;
 }

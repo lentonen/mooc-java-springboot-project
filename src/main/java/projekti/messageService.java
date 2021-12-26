@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projekti;
 
 import java.util.ArrayList;
@@ -41,13 +36,25 @@ public class MessageService {
         return commentIds;
     }
     
+    
     /**
-     * Palauttaa entityId:tä vastaavat viestit
+     * Palauttaa entityId:tä vastaavat viestit. Palautetaan maksimissaan 10 kommenttia. Tämä rajoite oli annettu harkkatyön ohjeessa.
      * @param entityId lista jota vastaavia viestejä etsitään
      * @return viestit joiden entityId löytyy parametrina viedystä listasta
      */
     public List<Message> findAllComments(List<Long> entityId) {
-        return messageRepository.findByEntityIdInOrderByMessageDateDescMessageTimeDesc(entityId);
+        return messageRepository.findTop10ByEntityIdInOrderByMessageDateDescMessageTimeDesc(entityId);
+    }
+    
+    
+    /**
+     * Palauttaa tiettyyn entiteettiin (kuva tai seinäviesti) liittyvät kommentit. Palauttaa maksimissaan 10 kommenttia. tämä rajoite oli annettu 
+     * harkkatyön ohjeessa.
+     * @param entityId entiteetin Id
+     * @return Kuvan tai seinäviestin kommentit
+     */
+    public List<Message> findComments(Long entityId) {
+        return messageRepository.findTop10ByEntityIdOrderByMessageDateDescMessageTimeDesc(entityId);
     }
     
     
@@ -75,6 +82,12 @@ public class MessageService {
     }
     
     
+    /**
+     * Luodaan kommentti seinäviestille
+     * @param content kommentin sisältö
+     * @param account kommentin tekijän tili
+     * @param messageId mihin viestiin kommentti liittyy
+     */
     public void createWallMessageComment(String content, Account account, Long messageId) {
         Message msg = new Message();
         msg.setContent(content);
@@ -82,4 +95,7 @@ public class MessageService {
         msg.setEntityId(messageId);
         messageRepository.save(msg);
     }
+    
+    
+    
 }
