@@ -39,19 +39,6 @@ public class AlbumPageContoller {
     @Autowired
     MessageRepository messageRepository;
     
-    /*@GetMapping("/album")
-    public String show(Model model) {
-        try {
-            Long firstId = pictureRepository.getNext(0L, accountService.getLoggedId()).getId();
-            return "redirect:/album/"+firstId;
-        } catch (NullPointerException e) {
-            String name = accountService.getLoggedNickame();
-            Long accountId = accountService.getLoggedId();
-            model.addAttribute("message", name);
-            model.addAttribute("count", pictureRepository.countByOwnerId(accountId));
-            return "albumPage";
-        } 
-    }*/
     
     @GetMapping("/album")
     public String showOwnAlbum() {
@@ -81,6 +68,7 @@ public class AlbumPageContoller {
             return "albumPage";
         } 
     }
+    
     
     @GetMapping("/mainPage/{url}/album/{id}")
     public String showPicture(Model model,@PathVariable String url, @PathVariable Long id) {
@@ -125,7 +113,6 @@ public class AlbumPageContoller {
         // Asetetaan id:tä vastaava kuva albumiin
         if (pictureRepository.existsById(id)) {
             model.addAttribute("current", id);
-            String description = pictureRepository.getOne(id).getDescription();
             model.addAttribute("description", pictureRepository.getOne(id).getDescription());
             model.addAttribute("comments", messageService.findComments(id));
         }
@@ -154,6 +141,7 @@ public class AlbumPageContoller {
         model.addAttribute("booleanProfilePic", isProfilePic);
         return "albumPage";
     }
+    
     
     @GetMapping(path = "/album/{id}/content", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
