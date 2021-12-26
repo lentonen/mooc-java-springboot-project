@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class AlbumPageContoller {
+public class AlbumPageController {
 
     @Autowired
     private PictureRepository pictureRepository;
@@ -230,3 +230,4 @@ public class AlbumPageContoller {
     
     
 }
+
