@@ -27,5 +27,5 @@ Tänne tulee Heroku-linkki, jossa sovellus pyörii.
 ## Tulevat päivitykset
 - [ ] Parempi käyttäjän "rekisteröinti" -sivu
 - [x] Kuvien kommentointi
-- [x] Tykkäyksetx
+- [x] Tykkäykset
 - [ ] Parannuksia ulkoasuun
