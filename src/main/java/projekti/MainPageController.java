@@ -94,7 +94,7 @@ public class MainPageController {
             
             // Ladataan wallMessaget
             model.addAttribute("wallMessages", messageRepository.findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc(follow, null));
-            model.addAttribute("comments", messageService.findAllCommentsByUser(userId));
+            model.addAttribute("comments", messageService.findAllCommentsByUser(follow));
             
             // Viedään sisään kirjautuneen käyttäjän profiilikuvan ID
             model.addAttribute("loggedUserPicId", accountService.getLoggedAccount().getProfilePictureId());

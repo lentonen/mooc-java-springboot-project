@@ -5187,3 +5187,6 @@ UPDATE "PUBLIC"."FILE_OBJECT" SET "ID"=? ,"CONTENT"=? ,"OWNER_ID"=? ,"DESCRIPTIO
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-12-26 22:49:56 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "FOLLOWERS[*]"; SQL statement:
+FOLLOWERS [42000-200]

@@ -70,10 +70,10 @@
               <div th:if="${current != null}">
                 <div th:if="${count < 10}">
                   <h2>Lisää uusi kuva</h2> 
-                  <form method="POST" th:action="@{{URI}/save(URI=${URI})}" enctype="multipart/form-data">
+                  <form class="input-group" method="POST" th:action="@{{URI}/save(URI=${URI})}" enctype="multipart/form-data">
                     <input type="file" name="file" id="file"/>
-                    <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
-                    <input type="submit" value="Lisää!"/>
+                    <textarea rows="1" name="description" placeholder="Kirjoita kuvateksti"></textarea>
+                    <input type="submit" class="ml-1" value="Lisää!"/>
                   </form>
                 </div>
                 <div th:unless="${count < 10}">
@@ -82,10 +82,10 @@
               </div>
               <div th:unless="${current != null}">
                 <h2>Lisää uusi kuva</h2> 
-                  <form method="POST" th:action="@{/mainPage/{url}/album/{id}/save(id=0,url=${url})}" enctype="multipart/form-data">
+                  <form class="input-group" method="POST" th:action="@{/mainPage/{url}/album/{id}/save(id=0,url=${url})}" enctype="multipart/form-data">
                     <input type="file" name="file" id="file"/>
-                    <input type="text" name="description" placeholder="Kirjoita kuvateksti"/>
-                    <input type="submit" value="Lisää!"/>
+                    <textarea rows="1" name="description" placeholder="Kirjoita kuvateksti"></textarea>
+                    <input type="submit" class="ml-1" value="Lisää!"/>
                   </form>
               </div>
             </div>
@@ -104,7 +104,7 @@
           <!--- Kommentin lisääminen--->
               <div class="d-flex flex-row add-comment-section mt-4 mb-4 " th:with="followList=${followList}, user=${albumOwnerId}, URI=${#httpServletRequest.requestURI}">
                     <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/pictureComment(URI=${URI})}" method="POST">
-                      <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
+                        <textarea name="comment" rows="1" type="text" class="form-control mr-3" placeholder="Lisää kommentti"></textarea>
                       <button class="btn btn-primary" type="submit">Kommentoi</button>
                     </form>
               </div>

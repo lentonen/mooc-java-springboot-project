@@ -49,10 +49,13 @@ public class AlbumPageController {
     
     @GetMapping("/mainPage/{url}/album")
     public String show(Model model, @PathVariable String url) {
+        String loggedNickname = accountService.getLoggedNickame();
         Long userId = accountService.getIdByUsingUrl(url);
         Long loggedUserId = accountService.getLoggedId();
         String name = accountService.getNickname(url);
         boolean ownAlbum = userId.equals(loggedUserId);
+        // Tieto kirjautuneesta käyttäjästä
+        model.addAttribute("loggedNickname", loggedNickname);
         // Viedään tieto, ollaanko omassa albumissa
         model.addAttribute("ownAlbum", ownAlbum);
         

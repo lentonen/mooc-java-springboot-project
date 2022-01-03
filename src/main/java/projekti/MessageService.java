@@ -26,14 +26,15 @@ public class MessageService {
      * @param accountId käyttäjä, jonka viestien kommentteja etsitään
      * @return seinäviestien kommenttien entityId:t
      */
-    public List<Long> findAllCommentEntityIds(Long accountId) {
-        List<Message> messages = messageRepository.findByAccountIdAndEntityIdNotNull(accountId);
-        List<Long> commentIds = new ArrayList<>();
+    public List<Long> findAllCommentEntityIds(List<Long> accountId) {
+        // Etsitään käyttäjän seinäviestien id:t
+        List<Message> wallMessages = messageRepository.findByAccountIdInAndEntityIdNull(accountId);
+        List<Long> entityId = new ArrayList<>();
         
-        for (Message msg : messages) {
-            commentIds.add(msg.getEntityId());
-        }
-        return commentIds;
+        for (Message msg : wallMessages){
+            entityId.add(msg.getId());
+        }    
+        return entityId;
     }
     
     
@@ -59,11 +60,11 @@ public class MessageService {
     
     
     /**
-     * Palauttaa kaikki käyttäjän seinäviestien kommentit
-     * @param accountId käyttäjä jonka viestien kommentteja etsitään
+     * Palauttaa kaikki listassa ennettujen käyttäjien seinäviestien kommentit
+     * @param accountId käyttäjät joiden viestien kommentteja etsitään
      * @return käyttäjän seinäviestien kommentit
      */
-    public List<Message> findAllCommentsByUser(Long accountId) {
+    public List<Message> findAllCommentsByUser(List<Long> accountId) {
         List <Message> msg =findAllComments(findAllCommentEntityIds(accountId));
         return msg;
     }

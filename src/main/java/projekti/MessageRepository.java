@@ -13,7 +13,8 @@ public interface MessageRepository  extends JpaRepository<Message, Long> {
     List<Message> findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc (List<Long> accountId, Long entityId);
     List<Message> findTop10ByEntityIdInOrderByMessageDateDescMessageTimeDesc (List<Long> entityId);
     List<Message> findTop10ByEntityIdOrderByMessageDateDescMessageTimeDesc (Long entityId);
-    List<Message> findByAccountIdAndEntityIdNotNull (Long accountId);
+    List<Message> findByEntityIdIn (List<Long> accountId);
+    List<Message> findByAccountIdInAndEntityIdNull (List<Long> accountId); 
     Message getById(Long id);
 }
         

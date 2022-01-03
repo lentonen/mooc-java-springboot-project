@@ -120,7 +120,7 @@
                   <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
                 </div>--->
                       <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
-                        <input name="comment" type="text" class="form-control mr-3" placeholder="Lisää kommentti">
+                          <textarea name="comment" rows="1" type="text" class="form-control mr-3" placeholder="Lisää kommentti"></textarea>
                         <button class="btn btn-primary btn-sm mr-3" type="submit">Kommentoi</button>
                       </form>
                 </div>
