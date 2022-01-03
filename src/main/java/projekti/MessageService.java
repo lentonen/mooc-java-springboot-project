@@ -44,7 +44,7 @@ public class MessageService {
      * @return viestit joiden entityId löytyy parametrina viedystä listasta
      */
     public List<Message> findAllComments(List<Long> entityId) {
-        return messageRepository.findTop10ByEntityIdInOrderByMessageDateDescMessageTimeDesc(entityId);
+        return messageRepository.findTop10ByEntityIdInOrderByMessageDateAscMessageTimeAsc(entityId);
     }
     
     
