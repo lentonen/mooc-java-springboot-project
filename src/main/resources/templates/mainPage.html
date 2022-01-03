@@ -95,7 +95,7 @@
             </div>
             <!---  --->
             <div th:each="wallMessage : ${wallMessages}" class="d-flex flex-column comment-section mt-3 bg-light rounded border " style="border-width:2px !important;" id="myGroup">
-              <div class="bg-white p-2 border-bottom px-4 mt-3 ml-3 mr-3">
+              <div class="bg-white p-2 border-bottom px-4 mt-3 ml-3 mr-3 mb-3">
                 <div class="d-flex flex-row user-info">
                     <div class="rounded-circle overflow-hidden custom-circle-image">
                       <img th:src="@{/album/{id}/content(id=${wallMessage.account.profilePictureId})}" style="width:150px">
@@ -111,25 +111,25 @@
                     <p class="comment-text"><span th:text="${wallMessage.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></p>
                 </div>
               </div>
-              
-                 <!--- Kommentin lisääminen, estetään jos seuraaminen estetty --->
+              <!--- Kommentin lisääminen, estetään jos seuraaminen estetty --->
               <div th:if="${!preventedBoolean}">
-                <div class="d-flex flex-row add-comment-section mt-4 mb-4 ml-2" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
-                    <!--- Käyttäjä voi lisätä kommentin seinäviestiin
+                <div class="d-flex flex-row add-comment-section mt-2 mb-2 ml-2" th:with="followList=${followList}, user=${wallMessage.account.id}, URI=${#httpServletRequest.requestURI}">
+                <!--- Käyttäjä voi lisätä kommentin seinäviestiin
                 <div class="rounded-circle overflow-hidden custom-circle-image-comment">
-                  <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
-                </div>--->
-                      <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
-                          <textarea name="comment" rows="1" type="text" class="form-control mr-3" placeholder="Lisää kommentti"></textarea>
-                        <button class="btn btn-primary btn-sm mr-3" type="submit">Kommentoi</button>
-                      </form>
-                </div>
-              </div> 
+                <img th:src="@{/album/{id}/content(id=${loggedUserPicId})}" style="width:100px">
+                 </div>--->
+                    <form th:if="${#lists.contains(followList, user)}" class ="input-group mb-4 ml-2" th:action="@{{URI}/messageComment/{id}(id=${wallMessage.id},URI=${URI})}" method="POST">
+                      <textarea name="comment" rows="1" type="text" class="form-control mr-3" placeholder="Lisää kommentti"></textarea>
+                      <button class="btn btn-primary btn-sm mr-3" type="submit">Kommentoi</button>
+                    </form>
+                  </div>
+              </div>
+                 
 
                 <!--- kommentit --->
-                      <div th:each="comment : ${comments}">
-                        <div th:if="${comment.entityId == wallMessage.id}" class="commented-section ml-4 mb-3 mr-3 bg-white">
-                          <div class="d-flex flex-row align-items-center commented-user">
+                      <div th:each="comment : ${comments}" th:with="count=0">
+                        <div th:if="${comment.entityId == wallMessage.id and count <10}" class="commented-section ml-4 mb-3 mr-3 bg-white">
+                          <div th:${count} = "${count +1}" class="d-flex flex-row align-items-center commented-user">
                             <div class="rounded-circle overflow-hidden custom-circle-image-comment mr-2 ml-2 mt-2">
                                <img th:src="@{/album/{id}/content(id=${comment.account.profilePictureId})}" style=" width:100px"> 
                             </div>

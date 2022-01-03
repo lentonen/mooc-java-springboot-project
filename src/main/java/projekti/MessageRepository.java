@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface MessageRepository  extends JpaRepository<Message, Long> {
     List<Message> findTop25ByAccountIdInAndEntityIdOrderByMessageDateDescMessageTimeDesc (List<Long> accountId, Long entityId);
-    List<Message> findTop10ByEntityIdInOrderByMessageDateAscMessageTimeAsc (List<Long> entityId);
-    List<Message> findTop10ByEntityIdOrderByMessageDateAscMessageTimeAsc (Long entityId);
+    List<Message> findByEntityIdInOrderByMessageDateAscMessageTimeAsc (List<Long> entityId);
+    List<Message> findTop10ByEntityIdOrderByMessageDateAscMessageTimeAsc(Long entityId);
     List<Message> findByEntityIdIn (List<Long> accountId);
     List<Message> findByAccountIdInAndEntityIdNull (List<Long> accountId); 
     Message getById(Long id);
