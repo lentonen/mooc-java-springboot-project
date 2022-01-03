@@ -17,15 +17,23 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 2. Avaa komentorivi ja navigoi projektin juureen (kansio jossa pom.xml sijaitsee)
 3. Suorita komento  `mvn spring-boot:run`
 4. Nyt sovellus on käytettävissä osoitteessa http://localhost:8080/
-5. Pääset kirjautumaan sovellukseen tunnuksilla "aku" (passwordaku)
+5. Pääset kirjautumaan sovellukseen esim. tunnuksilla "aku" (passwordaku). Voit myös luoda uuden tunnuksen.
 6. Sovellus sammuu komentorivillä painamalla `ctrl + c`
 
 
 ## Heroku
-Tänne tulee Heroku-linkki, jossa sovellus pyörii.
+Sovellusta pyörii pilvessä osoitteessa:
+https://wepa-project-1.herokuapp.com/
+
+Sovellukseen on tehty 3 käyttäjää demomielessä. Voit testata sovelluksen toimintaa kirjautumalla tunnuksilla:
+- tupu (passwordtupu)
+- aku (passwordaku)
+- iines (passwordiines)
+
+Voit myös tehdä uudet tunnukset ja aloittaa uudella käyttäjällä.
 
 ## Tulevat päivitykset
 - [ ] Parempi käyttäjän "rekisteröinti" -sivu
 - [x] Kuvien kommentointi
 - [x] Tykkäykset
-- [ ] Parannuksia ulkoasuun
+- [x] Parannuksia ulkoasuun
