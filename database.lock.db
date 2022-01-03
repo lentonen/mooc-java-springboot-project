@@ -1,4 +1,6 @@
 #FileLock
-#Mon Jan 03 13:21:58 EET 2022
+#Mon Jan 03 13:39:14 EET 2022
+server=192.168.0.16\:62197
+hostName=192.168.0.16
 method=file
-id=17e1facb3adae0e81d9ea53fcdddd5facd01fbcb716
+id=17e1fb8dfcc8d1b9e740071c022008ab11afcb58507
