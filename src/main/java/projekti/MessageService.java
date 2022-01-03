@@ -55,7 +55,7 @@ public class MessageService {
      * @return Kuvan tai seinäviestin kommentit
      */
     public List<Message> findComments(Long entityId) {
-        return messageRepository.findTop10ByEntityIdOrderByMessageDateDescMessageTimeDesc(entityId);
+        return messageRepository.findTop10ByEntityIdOrderByMessageDateDescMessageTimeAsc(entityId);
     }
     
     
