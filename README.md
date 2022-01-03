@@ -22,7 +22,7 @@ Kurssin projektityön ohjeet: https://web-palvelinohjelmointi-21.mooc.fi/projekt
 
 
 ## Heroku
-Sovellusta pyörii pilvessä osoitteessa:
+Sovellusta pyörii myös pilvessä osoitteessa:
 https://wepa-project-1.herokuapp.com/
 
 Sovellukseen on tehty 3 käyttäjää demomielessä. Voit testata sovelluksen toimintaa kirjautumalla tunnuksilla:
